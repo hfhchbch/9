@@ -1,0 +1,235 @@
+--Kenny泛滥外部汉化脚本我的哔站UID:1531514159（删了这个死妈死爹死全家）
+local Translations = {
+["Native [Native Dead Rails] [v0138] Freemium 0.5 Days"] = "红叶脚本汉化",
+["Configuration"] = "配置",
+["Utility"] = "实用工具",
+["Autos"] = "自动功能",
+["Areas"] = "区域",
+["Market"] = "市场",
+["Miscellaneous"] = "杂项",
+["Settings"] = "设置",
+["Debug"] = "调试",
+["Events Receiver Webhook"] = "事件接收",
+["Test AC"] = "测试反作弊",
+["Test Events Receiver Webhook"] = "测试事件接收",
+["3D Rendering"] = "3D 渲染",
+["Reduce Rendering (GREATLY BOOSTS FPS)"] = "降低渲染（大幅提升帧率）",
+["Instant Interaction"] = "即时交互",
+["Realistic Graphics (Breaks some prompt functionality for now)"] = "逼真图形（目前会破坏部分提示功能）",
+["Optimize Game (Irreversible; Removes Players)"] = "优化游戏（不可逆；移除玩家）",
+["Modifier"] = "修改器",
+["Field Of View"] = "视野",
+["Auto Play Again"] = "自动重新游玩",
+["Reset After [Auto Bonds]"] = "在[自动债券]后重置",
+["Re-match Lobby After [Auto Bonds]"] = "在[自动债券]后重新匹配大厅",
+["Skip Loading Delay [Auto Bonds]"] = "跳过[自动债券]加载延迟",
+["Auto Drive Train"] = "自动驾驶火车",
+["Auto Bonds"] = "自动债券",
+["Auto Win"] = "自动胜利",
+["Expand Fuel Detector"] = "扩展燃料探测器",
+["Auto Fill Fuel"] = "自动填充燃料",
+["Show Vault Code"] = "显示保险库密码",
+["Aim"] = "瞄准",
+["Silent Aim FOV"] = "静默瞄准视野范围",
+["Burst"] = "连射",
+["Gun Burst"] = "枪械连射",
+["MaximGun Burst Amount"] = "机枪连射数量",
+["MaximGun Burst"] = "机枪连射",
+["Bring"] = "获取",
+["Bring Items"] = "获取物品",
+["Placeholder"] = "占位符",
+["All"] = "全部",
+["Ammo"] = "弹药",
+["Bandage"] = "绷带",
+["Bond"] = "债券",
+["Bottle"] = "瓶子",
+["Coal"] = "煤炭",
+["Fuel"] = "燃料",
+["Gun"] = "枪",
+["Jade Mask"] = "玉面具",
+["Jade Sword"] = "玉剑",
+["Moneybag"] = "钱袋",
+["Snake Oil"] = "蛇油",
+["Valuable"] = "贵重物品",
+["Drag"] = "拖拽",
+["Drag Offset"] = "拖拽偏移",
+["Far Drag"] = "远程拖拽",
+["Weld Drag (Weld Anywhere)"] = "焊接（任意位置焊接）",
+["Teleport Drag Destination"] = "传送拖拽目标地",
+["None"] = "无",
+["Teleport Drag"] = "传送拖拽",
+["No-clip Drag"] = "无碰撞拖拽",
+["Fling Drag"] = "抛掷拖拽",
+["Party Id: rpCdM"] = "派对",
+["SOULS"] = "灵魂",
+["Train"] = "火车",
+["Trading Post"] = "贸易站",
+["ESP"] = "物品透视",
+["Melee"] = "近战",
+["Auto Swing"] = "自动挥砍",
+["Instant Kill"] = "一击必杀",
+["Gun"] = "枪械",
+["Instant Reload"] = "即时换弹",
+["Auto Reload [Gun]"] = "自动换弹 [枪械]",
+["Kill Aura"] = "范围击杀",
+["Consumable"] = "消耗品",
+["Auto Use Bandage"] = "自动使用绷带",
+["Auto Use Snake Oil"] = "自动使用蛇油",
+["Auto Consume Corpse"] = "自动消耗尸体",
+["Collection"] = "收集",
+["Collect Items"] = "收集物品",
+["Auto Collect"] = "自动收集",
+["Teleports"] = "传送",
+["Teleport to Train"] = "传送到火车",
+["Teleport to Fort Constitution"] = "传送到宪法要塞",
+["Teleport to Sterling"] = "传送到斯特林",
+["Teleport to Strange Pyramid"] = "传送到奇异金字塔",
+["Teleport to Tesla Lab"] = "传送到特斯拉实验室",
+["Teleport to Vampire Castle"] = "传送到吸血鬼城堡",
+["Teleport to Stillwater Prison"] = "传送到静水监狱",
+["Teleport to End"] = "传送到终点",
+["Safezone"] = "安全区",
+["Teleport to Safezone"] = "传送到安全区",
+["Player"] = "玩家",
+["Join JobId"] = "加入 JobId",
+["Hide Identity"] = "隐藏身份",
+["Hide All Characters"] = "隐藏所有角色",
+["Anti AFK"] = "防挂机",
+["Auto Rejoin (In Development)"] = "自动重连（开发中）",
+["Mod Detection"] = "模组检测",
+["Warning"] = "警告",
+["Leave"] = "离开",
+["Third Person"] = "第三人称",
+["Faster Walk"] = "加速走",
+["No-clip"] = "无碰撞",
+["Fly Speed"] = "飞行速度",
+["Fly"] = "飞行",
+["Fullbright"] = "全亮度",
+["Unlock Mouse"] = "解锁鼠标",
+["Game"] = "游戏",
+["Boost FPS"] = "提升帧率",
+["Destroy All ParticleEmitters"] = "销毁所有粒子发射器",
+["Others"] = "其他",
+["Infinite Yield"] = "无限收益",
+["Save Settings"] = "保存设置",
+["Reset Settings"] = "重置设置",
+["Copy Settings"] = "复制设置",
+["Silent Execution"] = "静默执行",
+["FPS"] = "帧率"
+}
+
+local function translateText(text)
+    if not text or type(text) ~= "string" then return text end
+    
+    if Translations[text] then
+        return Translations[text]
+    end
+    
+    for en, cn in pairs(Translations) do
+        if text:find(en) then
+            return text:gsub(en, cn)
+        end
+    end
+    
+    return text
+end
+
+local function setupTranslationEngine()
+    local success, err = pcall(function()
+        local oldIndex = getrawmetatable(game).__newindex
+        setreadonly(getrawmetatable(game), false)
+        
+        getrawmetatable(game).__newindex = newcclosure(function(t, k, v)
+            if (t:IsA("TextLabel") or t:IsA("TextButton") or t:IsA("TextBox")) and k == "Text" then
+                v = translateText(tostring(v))
+            end
+            return oldIndex(t, k, v)
+        end)
+        
+        setreadonly(getrawmetatable(game), true)
+    end)
+    
+    if not success then
+        warn("元表劫持失败:", err)
+       
+        local translated = {}
+        local function scanAndTranslate()
+            for _, gui in ipairs(game:GetService("CoreGui"):GetDescendants()) do
+                if (gui:IsA("TextLabel") or gui:IsA("TextButton") or gui:IsA("TextBox")) and not translated[gui] then
+                    pcall(function()
+                        local text = gui.Text
+                        if text and text ~= "" then
+                            local translatedText = translateText(text)
+                            if translatedText ~= text then
+                                gui.Text = translatedText
+                                translated[gui] = true
+                            end
+                        end
+                    end)
+                end
+            end
+            
+            local player = game:GetService("Players").LocalPlayer
+            if player and player:FindFirstChild("PlayerGui") then
+                for _, gui in ipairs(player.PlayerGui:GetDescendants()) do
+                    if (gui:IsA("TextLabel") or gui:IsA("TextButton") or gui:IsA("TextBox")) and not translated[gui] then
+                        pcall(function()
+                            local text = gui.Text
+                            if text and text ~= "" then
+                                local translatedText = translateText(text)
+                                if translatedText ~= text then
+                                    gui.Text = translatedText
+                                    translated[gui] = true
+                                end
+                            end
+                        end)
+                    end
+                end
+            end
+        end
+        
+        local function setupDescendantListener(parent)
+            parent.DescendantAdded:Connect(function(descendant)
+                if descendant:IsA("TextLabel") or descendant:IsA("TextButton") or descendant:IsA("TextBox") then
+                    task.wait(0.1)
+                    pcall(function()
+                        local text = descendant.Text
+                        if text and text ~= "" then
+                            local translatedText = translateText(text)
+                            if translatedText ~= text then
+                                descendant.Text = translatedText
+                            end
+                        end
+                    end)
+                end
+            end)
+        end
+        
+        pcall(setupDescendantListener, game:GetService("CoreGui"))
+        local player = game:GetService("Players").LocalPlayer
+        if player and player:FindFirstChild("PlayerGui") then
+            pcall(setupDescendantListener, player.PlayerGui)
+        end
+        
+        while true do
+            scanAndTranslate()
+            task.wait(3)
+        end
+    end
+end
+
+task.wait(2)
+
+setupTranslationEngine()
+
+local success, err = pcall(function()
+--这下面填加载外部脚本
+loadstring(game:HttpGet("https://getnative.cc/script/loader"))()
+
+
+
+end)
+
+if not success then
+    warn("加载失败:", err)
+end
