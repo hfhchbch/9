@@ -1,0 +1,258 @@
+--Kenny泛滥外部汉化脚本我的哔站UID:1531514159（删了这个死妈死爹死全家）
+local Translations = {
+    ["Main"] = "主菜单",
+    ["Exploits"] = "功能利用",
+    ["Visuals"] = "视觉效果",
+    ["Settings"] = "设置",
+    ["silent aim"] = "静默瞄准",
+    ["Enabled"] = "启用",
+    ["Team Check"] = "队伍检测",
+    ["Bullet Teleport"] = "子弹传送",
+    ["Target Part"] = "目标部位",
+    ["HumanoidRootPart"] = "人形根部件",
+    ["Silent Aim Method"] = "静默瞄准方式",
+    ["Raycast"] = "射线投射",
+    ["Blocked Methods"] = "屏蔽方式",
+    ["Include"] = "包含",
+    ["Origin"] = "原点",
+    ["Camera"] = "相机",
+    ["Multiply Unit By"] = "单位倍增",
+    ["Hit Chance"] = "命中概率",
+    ["AimLock settings"] = "瞄准锁设置",
+    ["enable/disable AimLock"] = "启用/禁用瞄准锁",
+    ["aimlock keybind"] = "瞄准锁按键绑定",
+    ["Camera Smoothing"] = "相机平滑度",
+    ["Prediction Factor"] = "预测系数",
+    ["Target Body Part"] = "目标身体部位",
+    ["Head"] = "头部",
+    ["Enable Anti Lock Resolver"] = "启用反锁解析器",
+    ["Resolver Intensity"] = "解析器强度",
+    ["Resolver Method"] = "解析器方式",
+    ["Recalculate"] = "重新计算",
+    ["Anti Lock"] = "反锁定",
+    ["Enable Desync"] = "启用解同步",
+    ["Desync keybind"] = "解同步按键绑定",
+    ["velocity intensity"] = "速度强度",
+    ["Visuals"] = "视觉",
+    ["Show FOV Circle"] = "显示视野圈",
+    ["FOV Circle Radius"] = "视野圈半径",
+    ["Show Silent Aim Target"] = "显示静默瞄准目标",
+    ["Ignore Player"] = "忽略玩家",
+    ["Target Strafe"] = "目标扫射",
+    ["Enable/Disable"] = "启用/禁用",
+    ["Enable Target Strafe"] = "启用目标扫射",
+    ["Target Strafe Mode"] = "目标扫射模式",
+    ["Horizontal"] = "水平",
+    ["Strafe Radius"] = "扫射半径",
+    ["Strafe Speed"] = "扫射速度",
+    ["Movement"] = "移动",
+    ["Enable/Disable movement"] = "启用/禁用移动",
+    ["Speed Toggle"] = "速度切换",
+    ["CFrame Multiplier"] = "坐标帧倍增",
+    ["CFly Toggle"] = "飞行切换",
+    ["CFly Speed"] = "飞行速度",
+    ["NoClip Toggle"] = "穿墙切换",
+    ["HitSound [beta]"] = "命中音效 [测试版]",
+    ["Enable HitSound"] = "启用命中音效",
+    ["HitSound"] = "命中音效",
+    ["Neverlose"] = "永不丢失",
+    ["War Tycoon"] = "战争大亨",
+    ["Enable/Disable"] = "启用/禁用",
+    ["Toggle Tank Spam"] = "坦克连发切换",
+    ["Shells per Spam"] = "每次连发炮弹数",
+    ["Spam Speed"] = "连发速度",
+    ["Tank/Vehicle modifier"] = "坦克/载具修改器",
+    ["Select Property"] = "选择属性",
+    ["FireRate"] = "射速",
+    ["Value"] = "数值",
+    ["APPLY PROPERTY"] = "应用属性",
+    ["weapon settings"] = "武器设置",
+    ["War Tycoon"] = "战争大亨",
+    ["Weapon In Hands"] = "手持武器",
+    ["INF AMMO"] = "无限弹药",
+    ["NO RECOIL | NO SPREAD"] = "无后坐力 | 无散布",
+    ["INF BULLET DISTANCE"] = "子弹无限距离",
+    ["Bullet Speed"] = "子弹速度",
+    ["CHANGE BULLET SPEED"] = "修改子弹速度",
+    ["Enter Fire Rate"] = "输入射速",
+    ["CHANGE FIRE RATE"] = "修改射速",
+    ["Enter Bullets"] = "输入子弹数",
+    ["MULTI BULLETS"] = "多发子弹",
+    ["Enter Fire Mode"] = "输入射击模式",
+    ["Auto"] = "自动",
+    ["CHANGE FIRE MODE"] = "修改射击模式",
+    ["ESP"] = "额外视觉信息",
+    ["Enable ESP"] = "启用额外视觉信息",
+    ["Team Check"] = "队伍检测",
+    ["NameTag"] = "名称标签",
+    ["Box"] = "方框",
+    ["Box Color"] = "方框颜色",
+    ["Tracer"] = "追踪线",
+    ["Tracer Color"] = "追踪线颜色",
+    ["HeadDot"] = "头部点",
+    ["HeadDot Size"] = "头部点大小",
+    ["HealthBar"] = "血条",
+    ["Self Chams"] = "自身材质",
+    ["Rainbow Chams"] = "彩虹材质",
+    ["Self Chams Color"] = "自身材质颜色",
+    ["Chams"] = "材质",
+    ["Chams Occluded Color"] = "被遮挡材质颜色",
+    ["Chams Visible Color"] = "可见材质颜色",
+    ["Occluded Transparency"] = "被遮挡透明度",
+    ["Visible Transparency"] = "可见透明度",
+    ["World"] = "世界",
+    ["Clock Time"] = "时钟时间",
+    ["FOV"] = "视野",
+    ["Enable FOV Change"] = "启用视野修改",
+    ["Nebula Theme"] = "星云主题",
+    ["SkyBox"] = "天空盒",
+    ["Select Skybox"] = "选择天空盒",
+    ["Game's Default Sky"] = "游戏默认天空",
+    ["Menu"] = "菜单",
+    ["Unload"] = "卸载",
+    ["Themes"] = "主题",
+    ["Background color"] = "背景颜色",
+    ["Main color"] = "主颜色",
+    ["Accent color"] = "强调色",
+    ["Outline color"] = "轮廓色",
+    ["Font color"] = "字体颜色",
+    ["Theme list"] = "主题列表",
+    ["Default"] = "默认",
+    ["Set as default"] = "设为默认",
+    ["Custom theme name"] = "自定义主题名称",
+    ["Custom themes"] = "自定义主题",
+    ["Save theme"] = "保存主题",
+    ["Load theme"] = "加载主题",
+    ["Refresh list"] = "刷新列表",
+    ["Configuration"] = "配置",
+    ["Config name"] = "配置名称",
+    ["Config list"] = "配置列表",
+    ["Create config"] = "创建配置",
+    ["Load config"] = "加载配置",
+    ["Overwrite config"] = "覆盖配置",
+    ["Set as autoload"] = "设为自动加载",
+    ["Current autoload config: none"] = "当前自动加载配置: 无",
+    ["商店"] = "商店",
+    ["设置"] = "设置",
+    ["更新"] = "更新",
+    ["Help"] = "帮助",
+    ["邀请"] = "邀请",
+    ["OPEN"] = "打开"
+}
+
+local function translateText(text)
+    if not text or type(text) ~= "string" then return text end
+    
+    if Translations[text] then
+        return Translations[text]
+    end
+    
+    for en, cn in pairs(Translations) do
+        if text:find(en) then
+            return text:gsub(en, cn)
+        end
+    end
+    
+    return text
+end
+
+local function setupTranslationEngine()
+    local success, err = pcall(function()
+        local oldIndex = getrawmetatable(game).__newindex
+        setreadonly(getrawmetatable(game), false)
+        
+        getrawmetatable(game).__newindex = newcclosure(function(t, k, v)
+            if (t:IsA("TextLabel") or t:IsA("TextButton") or t:IsA("TextBox")) and k == "Text" then
+                v = translateText(tostring(v))
+            end
+            return oldIndex(t, k, v)
+        end)
+        
+        setreadonly(getrawmetatable(game), true)
+    end)
+    
+    if not success then
+        warn("元表劫持失败:", err)
+       
+        local translated = {}
+        local function scanAndTranslate()
+            for _, gui in ipairs(game:GetService("CoreGui"):GetDescendants()) do
+                if (gui:IsA("TextLabel") or gui:IsA("TextButton") or gui:IsA("TextBox")) and not translated[gui] then
+                    pcall(function()
+                        local text = gui.Text
+                        if text and text ~= "" then
+                            local translatedText = translateText(text)
+                            if translatedText ~= text then
+                                gui.Text = translatedText
+                                translated[gui] = true
+                            end
+                        end
+                    end)
+                end
+            end
+            
+            local player = game:GetService("Players").LocalPlayer
+            if player and player:FindFirstChild("PlayerGui") then
+                for _, gui in ipairs(player.PlayerGui:GetDescendants()) do
+                    if (gui:IsA("TextLabel") or gui:IsA("TextButton") or gui:IsA("TextBox")) and not translated[gui] then
+                        pcall(function()
+                            local text = gui.Text
+                            if text and text ~= "" then
+                                local translatedText = translateText(text)
+                                if translatedText ~= text then
+                                    gui.Text = translatedText
+                                    translated[gui] = true
+                                end
+                            end
+                        end)
+                    end
+                end
+            end
+        end
+        
+        local function setupDescendantListener(parent)
+            parent.DescendantAdded:Connect(function(descendant)
+                if descendant:IsA("TextLabel") or descendant:IsA("TextButton") or descendant:IsA("TextBox") then
+                    task.wait(0.1)
+                    pcall(function()
+                        local text = descendant.Text
+                        if text and text ~= "" then
+                            local translatedText = translateText(text)
+                            if translatedText ~= text then
+                                descendant.Text = translatedText
+                            end
+                        end
+                    end)
+                end
+            end)
+        end
+        
+        pcall(setupDescendantListener, game:GetService("CoreGui"))
+        local player = game:GetService("Players").LocalPlayer
+        if player and player:FindFirstChild("PlayerGui") then
+            pcall(setupDescendantListener, player.PlayerGui)
+        end
+        
+        while true do
+            scanAndTranslate()
+            task.wait(3)
+        end
+    end
+end
+
+task.wait(2)
+
+setupTranslationEngine()
+
+local success, err = pcall(function()
+--这下面填加载外部脚本
+getgenv().bypass_adonis = true
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FakeAngles/PasteWare/refs/heads/main/PasteWare.lua"))()
+
+
+
+end)
+
+if not success then
+    warn("加载失败:", err)
+end
