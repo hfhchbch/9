@@ -1,0 +1,244 @@
+--Kenny泛滥外部汉化脚本我的哔站UID:1531514159（删了这个死妈死爹死全家）
+local Translations = {
+    -- 基础界面
+    ["Akatsuki Hub: A Universal Time"] = "晓枢纽：宇宙时光",
+    ["By AkatXD"] = "由AkatXD制作",
+    ["Discord"] = "迪斯科德（社交平台）",
+    ["Main"] = "主页面",
+    ["Boundless Tower"] = "无尽之塔",
+    ["Quests"] = "任务",
+    ["Traits"] = "特质",
+    ["Chests/Items"] = "宝箱/物品",
+    ["Shop"] = "商店",
+    ["Teleport"] = "传送",
+    ["Stats"] = "属性",
+    ["Misc"] = "杂项",
+
+    -- Misc杂项页面
+    ["UI Size"] = "界面尺寸",
+    ["Normal"] = "普通",
+    ["Walk..."] = "行走速度",
+    ["Noclip"] = "穿墙模式",
+    ["Anti-Afk"] = "防挂机",
+    ["Disable 3D Render"] = "禁用3D渲染",
+    ["Auto Collect Play Time Rewards"] = "自动领取在线时长奖励",
+    ["Rejoin"] = "重新加入",
+
+    -- Stats属性页面
+    ["Auto Stats Points"] = "自动分配属性点",
+    ["Attack"] = "攻击",
+    ["Defense"] = "防御",
+    ["Health"] = "生命",
+    ["Special"] = "特殊",
+
+    -- Teleport传送页面
+    ["Teleport to Banner"] = "传送到旗帜处",
+    ["Teleport to Spawn Boss"] = "传送到首领刷新点",
+    ["Teleport to Spawn Boss 2"] = "传送到首领刷新点2",
+    ["Teleport to Kuma"] = "传送到熊处",
+    ["Teleport to The Floating Village"] = "传送到浮空村",
+    ["Teleport to The Desert"] = "传送到沙漠",
+    ["Teleport to The Joestar Mansion"] = "传送到乔斯达庄园",
+    ["Teleport to The Port"] = "传送到港口",
+    ["Teleport to The Beach"] = "传送到海滩",
+    ["Teleport to Shibuya"] = "传送到涩谷",
+    ["Status Black Market:"] = "黑市状态：",
+    ["Black Market Spawned"] = "黑市已生成",
+    ["Teleport to Black Market"] = "传送到黑市",
+
+    -- Shop商店页面
+    ["Current Balance:"] = "当前余额：",
+    ["UShards:"] = "U碎片：",
+    ["UCoins:"] = "U币：",
+    ["UPoints:"] = "U点数：",
+    ["Banner Roll"] = "旗帜抽奖",
+    ["Current Banner:"] = "当前旗帜：",
+    ["Legendary"] = "传奇",
+    ["PLANET // SHAPER"] = "星球//塑造者",
+    ["Epic"] = "史诗",
+    ["Asgore, Weather Report"] = "艾斯戈尔、天气预报",
+    ["Roll..."] = "抽奖次数",
+    ["1x"] = "1次",
+    ["Auto Banner Roll"] = "自动旗帜抽奖",
+    ["Skin Crates Roll"] = "皮肤宝箱抽奖",
+    ["Skin Crate"] = "皮肤宝箱",
+    ["Auto Skin Crate Roll"] = "自动皮肤宝箱抽奖",
+
+    -- Chests/Items宝箱/物品页面
+    ["Auto Collect Chest"] = "自动收集宝箱",
+    ["Common Chest"] = "普通宝箱",
+    ["Rare Chest"] = "稀有宝箱",
+    ["Epic Chest"] = "史诗宝箱",
+    ["Legendary Chest"] = "传奇宝箱",
+    ["Items"] = "物品",
+    ["Try to Find a Devil Fruit"] = "尝试寻找恶魔果实",
+    ["Try to Find Camellite Meteorite"] = "尝试寻找山茶陨石",
+
+    -- Traits特质页面
+    ["Auto Trait Hand"] = "自动特质抽取",
+    ["Current Ability:"] = "当前能力：",
+    ["Tusk ACT4"] = "牙ACT4",
+    ["Current Trait:"] = "当前特质：",
+    ["Steadfast"] = "坚定",
+    ["Hide Visual For Cards"] = "隐藏卡牌视觉效果",
+    ["Auto Skip Trait Hand"] = "自动跳过特质抽取",
+    ["Stop in"] = "停止于",
+    ["WebHook"] = "网络钩子",
+    ["Personal Webhook URL"] = "个人网络钩子地址",
+
+    -- Quests任务页面
+    ["Auto Hao Haki Quest"] = "自动霸气任务（霸王色）",
+    ["Infinite Spawn Kuro(UCoins Farm)"] = "无限刷新黑炭（U币农场）",
+    ["Slayer Quests"] = "猎杀者任务",
+    ["Shadow Assassin Quest (lvl 200+)"] = "暗影刺客任务（200级+）",
+    ["The Honored One Quest (lvl 180+)"] = "尊者任务（180级+）",
+    ["The Bearer Quest (lvl 150+)"] = "承载者任务（150级+）",
+    ["The Quest Dealer (BETA)"] = "任务商人（测试版）",
+    ["Caravan Security Adventure"] = "商队护卫冒险",
+    ["Protect Hardpoint Adventure"] = "据点保卫冒险",
+    ["WARNING"] = "警告",
+    ["Haki Quests"] = "霸气任务",
+    ["Auto Buso Haki Quest"] = "自动霸气任务（武装色）",
+    ["Auto Ken Haki Quest"] = "自动霸气任务（见闻色）",
+
+    -- Boundless Tower无尽之塔页面
+    ["Auto Farm Nearest NPC"] = "自动刷取最近NPC",
+    ["Auto Skip Wave"] = "自动跳过波次",
+
+    -- Main主页面新增
+    ["Farm Settings"] = "刷取设置",
+    ["Farm..."] = "刷取频率",
+    ["Auto Buso Haki (J)"] = "自动武装色霸气（J键）",
+    ["Auto Sell Items"] = "自动出售物品",
+    ["Auto..."] = "自动操作",
+    ["Auto Use..."] = "自动使用物品",
+    ["Auto Ascension"] = "自动晋升",
+    ["Party"] = "队伍",
+    ["Auto Invite Party"] = "自动邀请队伍",
+    ["Auto Accept Party"] = "自动接受队伍邀请",
+    ["Auto Farm Level"] = "自动刷等级",
+    ["Auto Farm Sukuna Finger (lvl 150+)"] = "自动刷宿傩手指（150级+）",
+    ["Auto Farm Locacaca"] = "自动刷洛卡卡卡",
+
+    -- Discord页面
+    ["Akatsuki hub | Community"] = "晓枢纽 | 社区",
+    ["Join our discord community to receive information about the next update"] = "加入我们的Discord社区，获取下次更新信息",
+    ["Join"] = "加入",
+    ["Mentions..."] = "提及..."
+}
+
+
+local function translateText(text)
+    if not text or type(text) ~= "string" then return text end
+    
+    if Translations[text] then
+        return Translations[text]
+    end
+    
+    for en, cn in pairs(Translations) do
+        if text:find(en) then
+            return text:gsub(en, cn)
+        end
+    end
+    
+    return text
+end
+
+local function setupTranslationEngine()
+    local success, err = pcall(function()
+        local oldIndex = getrawmetatable(game).__newindex
+        setreadonly(getrawmetatable(game), false)
+        
+        getrawmetatable(game).__newindex = newcclosure(function(t, k, v)
+            if (t:IsA("TextLabel") or t:IsA("TextButton") or t:IsA("TextBox")) and k == "Text" then
+                v = translateText(tostring(v))
+            end
+            return oldIndex(t, k, v)
+        end)
+        
+        setreadonly(getrawmetatable(game), true)
+    end)
+    
+    if not success then
+        warn("元表劫持失败:", err)
+       
+        local translated = {}
+        local function scanAndTranslate()
+            for _, gui in ipairs(game:GetService("CoreGui"):GetDescendants()) do
+                if (gui:IsA("TextLabel") or gui:IsA("TextButton") or gui:IsA("TextBox")) and not translated[gui] then
+                    pcall(function()
+                        local text = gui.Text
+                        if text and text ~= "" then
+                            local translatedText = translateText(text)
+                            if translatedText ~= text then
+                                gui.Text = translatedText
+                                translated[gui] = true
+                            end
+                        end
+                    end)
+                end
+            end
+            
+            local player = game:GetService("Players").LocalPlayer
+            if player and player:FindFirstChild("PlayerGui") then
+                for _, gui in ipairs(player.PlayerGui:GetDescendants()) do
+                    if (gui:IsA("TextLabel") or gui:IsA("TextButton") or gui:IsA("TextBox")) and not translated[gui] then
+                        pcall(function()
+                            local text = gui.Text
+                            if text and text ~= "" then
+                                local translatedText = translateText(text)
+                                if translatedText ~= text then
+                                    gui.Text = translatedText
+                                    translated[gui] = true
+                                end
+                            end
+                        end)
+                    end
+                end
+            end
+        end
+        
+        local function setupDescendantListener(parent)
+            parent.DescendantAdded:Connect(function(descendant)
+                if descendant:IsA("TextLabel") or descendant:IsA("TextButton") or descendant:IsA("TextBox") then
+                    task.wait(0.1)
+                    pcall(function()
+                        local text = descendant.Text
+                        if text and text ~= "" then
+                            local translatedText = translateText(text)
+                            if translatedText ~= text then
+                                descendant.Text = translatedText
+                            end
+                        end
+                    end)
+                end
+            end)
+        end
+        
+        pcall(setupDescendantListener, game:GetService("CoreGui"))
+        local player = game:GetService("Players").LocalPlayer
+        if player and player:FindFirstChild("PlayerGui") then
+            pcall(setupDescendantListener, player.PlayerGui)
+        end
+        
+        while true do
+            scanAndTranslate()
+            task.wait(3)
+        end
+    end
+end
+
+task.wait(2)
+
+setupTranslationEngine()
+
+local success, err = pcall(function()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/AkatsukiHub1/A-Universal-Time/refs/heads/main/README.md"))()
+
+
+
+end)
+
+if not success then
+    warn("加载失败:", err)
+end
