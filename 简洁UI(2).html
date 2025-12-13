@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>UI</title>
+<!--设置手机显示模式, 填满宽度,原尺寸显示,禁止双指缩放-->
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://lib.baomitu.com/vant/2.12.48/index.css" />
+<!-- 引入 Vue 和 Vant 的 JS 文件 -->
+<script src="https://lib.baomitu.com/vue/2.6.0/vue.min.js"></script>
+<script src="https://lib.baomitu.com/vant/2.12.48/vant.js"></script>
+<style>
+/* 深色模式 */
+@media (prefers-color-scheme: dark) {
+body {
+background-repeat: no-repeat;
+background-position: center;
+background-attachment: fixed;
+background-size: cover;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+}
+.outer-rounded-box {
+background-image: none !important;
+background-color: #3C3C3C !important;
+border: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+.inner-rounded-box, 
+.inner-rounded-boxa,
+.inner-gn,
+/*进程选择框样式 */
+#popup_proclist {
+background-color: rgba(0, 0, 0, 0.3) !important;
+background-image: none !important; /* 移除背景图片 */
+}
+#popup_proclist button {
+color: white !important; /* 白色文字 */
+background-color: transparent !important;
+border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important; /* 分割线 */
+}
+#popup_proclist center {
+color: white !important; /* 标题文字颜色 */
+}
+#popup_proclist hr {
+border-color: rgba(255, 255, 255, 0.1) !important; /* 水平分割线颜色 */
+}
+/* 滑块右侧数字的白色样式 */
+.van-stepper__input {
+color: white !important;
+ }
+/* 确保步进器按钮图标也是白色 */
+.van-stepper__plus,
+.van-stepper__minus {
+color: white !important;
+}
+/* 如果步进器有背景色，可以设置为透明 */
+.custom-stepper {
+background-color: transparent !important;
+}
+.button,
+.custom-span,
+.zhitiys,
+.zhitiys1,
+.song-info div,
+.song-info div div,
+.van-tab,
+.van-tab--active,
+.van-switch__node,
+#popup_proclist button,
+#proctable button {
+color: white !important;
+}
+.button {
+background-color: rgba(0, 0, 0, 0.3) !important;
+}
+.van-slider__bar {
+background-color: #00FFFF !important;
+}
+.van-slider__button {
+background-color: #6FB7B7 !important;
+border: 1px solid white !important;
+  }
+/* 音乐播放按钮适配 */
+#triangle, #double-vertical {
+fill: rgba(255,255,255,0.9) !important;
+}
+  /* 歌曲信息颜色 */
+.song-info div,
+.song-info div div {
+color: rgba(255,255,255,0.9) !important;
+  }
+}
+/* 添加过渡效果 */
+:root {
+--bg-color: #ffffff;
+--text-color: #333333;
+--accent-color: #007aff;
+transition: background-color 0.3s ease, color 0.3s ease;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--bg-color: #1c1c1e;
+--text-color: #f5f5f5;
+--accent-color: #0a84ff;
+  }
+}
+@keyframes Qtang {
+0% {
+transform: matrix3d(0.92, 0, 0, 0, 0, 0.92, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+3.4% {
+transform: matrix3d(0.938, 0, 0, 0, 0, 0.933, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+4.7% {
+transform: matrix3d(0.945, 0, 0, 0, 0, 0.94, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+6.81% {
+transform: matrix3d(0.95, 0, 0, 0, 0, 0.956, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+9.41% {
+transform: matrix3d(0.942, 0, 0, 0, 0, 1.084, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+10.21% {
+transform: matrix3d(0.971, 0, 0, 0, 0, 1.113, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+13.61% {
+transform: matrix3d(1.062, 0, 0, 0, 0, 1.166, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+14.11% {
+transform: matrix3d(1.07, 0, 0, 0, 0, 1.165, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+17.52% {
+transform: matrix3d(1.104, 0, 0, 0, 0, 1.12, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+18.72% {
+transform: matrix3d(1.106, 0, 0, 0, 0, 1.094, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+21.32% {
+transform: matrix3d(1.098, 0, 0, 0, 0, 1.035, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+24.32% {
+transform: matrix3d(1.075, 0, 0, 0, 0, 0.98, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+25.23% {
+transform: matrix3d(1.067, 0, 0, 0, 0, 0.969, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+29.03% {
+transform: matrix3d(1.031, 0, 0, 0, 0, 0.948, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+29.93% {
+transform: matrix3d(1.024, 0, 0, 0, 0, 0.949, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+35.54% {
+transform: matrix3d(0.99, 0, 0, 0, 0, 0.981, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+36.74% {
+transform: matrix3d(0.986, 0, 0, 0, 0, 0.989, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+41.04% {
+transform: matrix3d(0.98, 0, 0, 0, 0, 1.011, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+44.44% {
+transform: matrix3d(0.983, 0, 0, 0, 0, 1.016, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+52.15% {
+transform: matrix3d(0.996, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+59.86% {
+transform: matrix3d(1.003, 0, 0, 0, 0, 0.995, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+63.26% {
+transform: matrix3d(1.004, 0, 0, 0, 0, 0.996, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+75.28% {
+transform: matrix3d(1.001, 0, 0, 0, 0, 1.002, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+85.49% {
+transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+90.69% {
+transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+100% {
+transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    }
+}
+
+/* 调用外部字体 */
+@font-face {
+font-family: Typeface;
+src: url("http://123.249.117.20/96KcyZwP_腾讯字体.ttf");
+}
+body {
+background-repeat: no-repeat;
+background-position: center;
+background-attachment: fixed;
+background-size: cover;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+-moz-user-select:none;
+-webkit-user-select:none;
+-ms-user-select:none;
+-khtml-user-select:none;
+user-select:none
+}
+/*菜单*/
+*:not(input, checkbox, textarea) {
+/*禁止文本选择*/
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+user-select: none;
+/* Non-prefixed version, currently */
+}
+/*容器*/
+.aymenu {
+width: 377px;
+height: 300px;
+background-color: transparent !important;
+position: fixed;
+border-radius: 10px;
+opacity: 1;
+}
+/*菜单拖动头*/
+.van-nav-bar {
+background-color: transparent !important;
+border-radius: 8px;
+top: 6px;
+left: 40%;
+line-height: 15px;
+text-align: center;
+height: 15px;
+width: 29%;
+}
+.van-hairline--bottom::after {
+border-bottom-width: 0px;
+}
+/* Flexbox容器用于居中其子元素 */
+.centered-container {
+justify-content: center;/* 水平居中子元素 */
+align-items: center;/* 垂直居中子元素 */
+position: absolute;/* 绝对定位 */
+top: 0; /* 顶部对齐 */
+left: 0;/* 左侧对齐 */
+right: 0; /* 右侧对齐 */
+bottom: 0;/* 底部对齐 */
+}
+/* 容器UI样式*/
+.outer-rounded-box {
+animation: Qtang 1.5s linear;
+position: fixed;
+margin: auto;
+position: relative; /* 修改此处 */
+overflow-y: auto; /* 允许垂直滚动 */
+width: 377px;
+height: 300px;
+display: flex;
+box-sizing: border-box;
+padding: 5px;
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 0 20px rgba(0, 0, 0, 10.6);
+border: 1px solid rgba(255, 250, 250,0.8); /* 半透明白色边框 */
+background-image: url('https://m.360buyimg.com/i/jfs/t1/292982/21/18292/164931/68883e20F57323240/7b1551d3c59714f9.jpg');
+background-repeat: no-repeat;/*背景图*/
+background-position: center;
+background-size: cover;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+}
+
+.outer-rounded-boxa{
+flex-grow:1;display:flex;
+flex-direction:column
+}
+/* 菜单内左边导航样式 */
+.inner-rounded-box {
+width: 110px;
+flex-grow: 1;
+box-sizing: border-box;
+padding: 5px;
+margin-right: 6px;
+border-radius: 10px;
+position: relative;
+-webkit-backdrop-filter: blur(30px); /* iOS兼容性前缀 */
+backdrop-filter: blur(30px); /* 模糊效果 */
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+transform: translateX(-5px) scale(1.05); /* 向左偏移稍微放大 */
+border: 1px solid #transparent; /*边框增强视觉效果 */
+}
+/*菜单内左边导航样式*/
+.inner-rounded-box {
+width:110px;
+flex-grow:1px;
+box-sizing:border-box;
+padding:5px;
+margin-right:6px;
+border-radius:10px;
+position:relative;
+opacity:0;
+transform:translateX(-100%);
+animation:slideInLeft 1s forwards 0s
+}
+@keyframes slideInLeft{
+0%{
+opacity:0;
+transform:translateX(-100%)
+}
+100%{
+opacity:1;
+transform:translateX(0)
+    }
+}
+/*子菜单内样式*/
+.inner-rounded-boxa {
+-webkit-backdrop-filter: blur(30px); /* iOS兼容性前缀 */
+backdrop-filter: blur(30px); /* 模糊效果 */
+flex-grow:1;
+width:270px;
+overflow:auto;
+border-radius:10px;
+border: 1px solid transparent; /*透明边框 */
+box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.4); /* 内阴影*/
+margin-top:20px;
+opacity:0;
+transform:translateX(100%);
+animation:slideInRight 1s forwards 0s
+}
+@keyframes slideInRight{
+0%{
+opacity:0;
+transform:translateX(100%)
+}
+100%{
+opacity:1;transform:translateX(0)
+   }
+}
+/*顶端拖动条*/
+.top-decoration{
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+border: 1px solid #transparent; /* 可选：添加边框以增强视觉效果 */
+background-image: linear-gradient(to right, #ffffff, #EA0000,#ffffff);
+width:100px;
+height:4px;
+border-radius:10px;
+margin-top:5px;
+margin-left:50px;
+margin-bottom:6px;
+position:absolute;
+opacity:0;
+transform:translateY(-100%);
+animation:slideDown 1s forwards 0.9s
+}
+@keyframes slideDown{
+0%{
+opacity:0;
+transform:translateY(-100%)
+}
+100%{
+opacity:1;
+transform:translateY(0)
+  }
+}
+.inner-bt {
+color: rgba(255, 255, 255, 0.8);
+width: 70px; /* 固定宽度 */
+height: 70px; /* 固定高度 */
+margin: 0 auto; /* 水平居中 */
+border-radius: 50%; /* 圆形 */
+box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.4);
+border: 1px solid transparent;
+display: flex;
+justify-content: center;
+align-items: center;
+position: relative;
+overflow: hidden;
+cursor: pointer;
+z-index: 999;
+}
+.rotating-avatar {
+display: flex;
+width: 60px; /* 固定宽度 */
+height: 60px; /* 固定高度 */
+margin: 0 auto; /* 水平居中 */
+border-radius: 50%;
+animation: spin 2s linear infinite;
+}
+@keyframes spin {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+/* 定义旋转动画 */
+@keyframes spin {
+from {
+transform: rotate(0deg);
+}
+to {
+transform: rotate(360deg);
+  }
+}
+/*导航栏顶端logo*/
+.inner-bt{
+color:rgba(255,255,255,.8);
+box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.4); /* 内阴影*/
+border: 1px solid transparent; /*透明边框 */
+display:flex;
+justify-content:center;
+align-items:center;position:relative;
+overflow:hidden;
+cursor:pointer;
+z-index:999
+}
+/*导航按钮样式*/
+.button{
+display: flex;
+align-items: center;
+justify-content: center;
+width:100%;
+height:30px;
+margin-top:10px;
+border-radius:5px;
+border: 1px solid transparent; /*透明边框 */
+box-shadow: -1px 2px 8px rgba(0, 0, 0, 0.5);
+text-align:center;
+line-height:30px;
+cursor:pointer;font-weight:bold;
+background-color: rgba(105, 105, 105, 0.3);
+color:rgba(255,255,255);
+transition:background-color 0.5s
+}
+/*svg图标*/
+.button svg {
+fill: #FFFFFF;
+margin-right: 3px; /* 图标与文字之间的间距 */
+transition: transform 0.2s, fill 0.2s;
+}
+/*子菜单内开关底部样式*/
+.inner-gn{
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+border: 1px solid #transparent; /*边框增强视觉效果 */
+width:250px;
+display:flex;flex-direction:column;
+padding:10px;
+margin:10px;
+position:relative;
+border-radius:10px;
+box-shadow:0 1px 10px rgba(0,0,0,0.5);
+opacity: 0;
+animation-fill-mode: slideInRight; /* 确保动画状态 */
+transform: translateX(89%); /* 从右侧移出*/
+animation: slideInRight 0.7s ease-out forwards;
+cursor:pointer;
+transition:background-color 0.3s ease
+}
+.inner-gn-content{
+flex-grow:1
+}
+/* 右侧滑入动画*/
+@keyframes slideInRight {
+to {
+opacity: 1;
+transform: translateX(0);
+    }
+}
+/*设置元素动画延迟 */
+.inner-gn:nth-child(1) {
+animation-delay: 0s;
+}
+.inner-gn:nth-child(2) {
+animation-delay: 0.1s;
+}
+.inner-gn:nth-child(3) {
+animation-delay: 0.2s;
+}
+.inner-gn:nth-child(4) {
+animation-delay: 0.3s;
+}
+.inner-gn:nth-child(5) {
+animation-delay: 0.4s;
+}
+.inner-gn:nth-child(6) {
+animation-delay: 0.5s;
+}
+.inner-gn:nth-child(7) {
+animation-delay: 0.6s;
+}
+.inner-gn:nth-child(8) {
+animation-delay: 0.7s;
+}
+.inner-gn:nth-child(9) {
+animation-delay: 0.8s;
+}
+.blue-background{
+box-shadow:inset 0 -4px 8px rgba(0,0,0,0.1);
+color:white;
+padding:10px;
+margin-top:5px;
+border-radius:5px;
+display:none;
+animation:fadeInOut 0.5s ease forwards;flex-direction:column
+}
+/*公告样式*/
+.blue-backgroundx{
+color:white;
+height:250px;
+padding:10px;
+margin:10px;
+border-radius:5px;
+animation: fadeIn 1s forwards; /* 动画名称 */
+animation-fill-mode: forwards; /* 确保动画状态 */
+opacity: 0; /* 初始透明度 */
+}
+.chutixtextgg{
+font-size:13px;
+font-weight:bold;
+position:relative;
+z-index:2;margin-top:5px;
+margin-left:5px
+}
+@keyframes fadeIn {
+0% {
+opacity: 0; /* 初始透明度 */
+}
+100% {
+opacity: 1; /* 最终透明度 */
+    }
+}
+.box{
+z-index:5;
+width:100%;
+-webkit-box-reflect:below 1px 
+background-color: #EA0000;
+linear-gradient(transparent,rgba(0,0,0,0.2))
+}
+/* logo文字*/
+h1{
+z-index:5;
+font-size:18px;
+letter-spacing:1px;
+text-align:center;
+line-height:0px;outline:
+color:rgba(255,255,255,.8);
+text-shadow:2px 2px 5px rgba(255,255,255,0.5);
+font-family: Typeface;
+}
+input.range{
+width:100%;
+height:15px;
+background:;
+appearance:none;background-color:rgba(0,0,0,.1);
+border:1px solid rgba(0,0,0,.2);
+border-radius:999px;
+outline:none;
+overflow:hidden
+}
+input.range::-webkit-slider-thumb{
+appearance:none;
+width:13px;
+height:13px;
+background:white;
+border-radius:15px;
+border:2px solid #1e90ff;
+box-shadow:calc(-33vw - 15px) 0 0 35vw rgba(30,144,255,0.7),
+inset 0 0 5px #1e90ff;
+cursor:pointer
+}
+input.range::-webkit-slider-thumb:hover{
+background:#0070ff
+}
+.dropdown{
+position:relative;
+width:250px;
+height:40px;
+padding:10px;
+margin:10px;
+border-radius:10px;
+box-shadow:0 1px 10px rgba(0,0,0,0.1)
+}
+.dropdown::before{
+content:'';
+position:absolute;
+top:20px;
+right:28px;
+width:12px;
+height:2px;
+background:#a8a8a8;z-index:10;
+transform:rotate(40deg);
+transition:0.5s
+}
+.dropdown.active::before{
+right:20px
+}
+.dropdown::after{
+content:'';
+position:absolute;
+top:20px;
+right:20px;
+width:12px;
+height:2px;
+background:#a8a8a8;z-index:10;
+transform:rotate(-40deg);
+transition:0.5s
+}
+.dropdown.active::after{
+right:28px
+}.dropdown input{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+cursor:pointer;
+border-radius:10px;
+padding:10px;
+font-size:16px;
+background:transparent;
+outline:none;border:none;
+color:#eefeff
+}
+.dropdown .option{
+position:absolute;
+top:50px;
+left:0;
+width:100%;
+max-height:200px;
+color:#eefeff;
+font-family:'微软正黑体';
+box-shadow:inset 0 -4px 8px rgba(0,0,0,0.1);
+border-radius:10px;
+overflow:auto;
+visibility:hidden;
+opacity:0;
+transition:0.25s;
+z-index:11
+}
+.dropdown.active .option{
+visibility:visible;
+opacity:1
+}
+.dropdown .option div{
+padding:10px;
+cursor:pointer
+}
+ .image-background {
+ position: relative;
+ width: 100%;
+ height: 0;
+ padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+ overflow: hidden;
+user-select: none; /* 防止用户选择文本 */
+-webkit-user-drag: none; /* 防止拖动图片 */
+-webkit-touch-callout: none; /* 防止长按弹出菜单 */
+ }
+.image-background img {
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ position:absolute;
+ border-radius: 15px; /* 圆角大小 */
+ user-select: none; /* 防止用户选择图片上的文本 */
+-webkit-user-drag: none; /* 防止拖动图片 */
+ }
+/*开关字体*/
+.custom-span {
+color: #272727;
+margin-left: 5px;
+font-weight: bold;
+font-size: 14px;
+font-family: 'Trebuchet MS', sans-serif;
+}
+.custom-span {
+display: flex;
+justify-content: space-between; /* 将文字和开关分布在两端 */
+align-items: center; /* 垂直居中对齐 */
+width: 100%; /* 确保占据整个宽度 */
+}
+/*开关*/
+.van-switch {
+box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.5); /* 内阴影*/
+position: relative;
+display: inline-block;
+box-sizing: content-box;
+width: 39px;
+height: 20px;
+font-size: 30px;
+border: 1px solid #fff;
+background-color: #fff;
+border-radius: 1em;
+cursor: pointer;
+-webkit-transition: background-color .3s;
+transition: background-color .3s;
+}
+.van-switch__node {
+position: absolute;
+font-size: 20px;
+top: 2px;
+left: 2px;
+width: 16px;
+height: 16px;
+font-size: inherit;
+background-color: #fff;
+box-shadow: 0 3px 1px 0 rgb(0 0 0 / 2%), 0 2px 2px 0 rgb(0 0 0 / 5%), 0 3px 3px 0 rgb(0 0 0 / 5%);
+-webkit-transition: 
+-webkit-transform .3s cubic-bezier(.3, 1.05, .4, 1.05);
+transition: -webkit-transform .3s cubic-bezier(.3, 1.05, .4, 1.05);
+transition: transform .3s cubic-bezier(.3, 1.05, .4, 1.05);
+transition: transform .3s cubic-bezier(.3, 1.05, .4, 1.05), 
+-webkit-transform .3s cubic-bezier(.3, 1.05, .4, 1.05);
+}
+/*音乐容器*/
+.song-info {
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+transform: translateX(-5px) scale(1.05); /* 向左偏移稍微放大 */
+border: 1px solid #transparent; /* 边框增强视觉效果 */
+display: flex;
+align-items: center;
+color: #272727;
+padding: 10px;
+border-radius: 8px;
+margin-bottom: 15px;
+}
+/*音乐头像*/
+.anime-avatar {
+ background-image: url('https://img.meituan.net/csc/3046adb961585ba7f341d4ab710b30cb200910.gif');
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+width: 40px;
+height: 40px;
+border-radius: 8px;
+margin-right: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+font-size: 12px;
+}
+/*音乐播放按钮*/
+.my-new-image-style {
+position: absolute;
+width: 15px;
+height: 15px;
+left: 90%; /* 将元素移动到父容器的最右边 */
+top: 50%; /* 垂直居中 */
+transform: translate(-100%, -50%);
+}
+/* 双竖线*/
+#double-vertical {
+position: absolute;
+width: 20px;
+height: 25px;
+left: 90%; /* 将元素移动到父容器的最右边 */
+top: 50%; /* 垂直居中 */
+transform: translate(-100%, -50%);
+display: none; /* 隐藏 */
+opacity: 0;
+animation: fadeIn 1s forwards;
+animation-fill-mode: forwards;
+}
+/* 播放状态显示双竖线隐藏三角*/
+.playing #triangle {
+display: none;
+}
+.playing #double-vertical {
+display: block;
+}
+/*定义滑轨*/
+.van-slider {
+border: 1px solid transparent; /*透明边框 */
+box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.4); /* 内阴影*/
+background-color: transparent !important;
+margin-right: -5px; /*间距 */
+height: 10px !important; /* 滑轨高度 */
+border-radius: 5px !important; /* 滑轨圆角 */
+}
+.van-slider__bar {
+background-color: #00FFFF !important; /* 滑轨背景色 */
+height: 8px !important; /* 滑轨高度 */
+border-radius: 5px !important; /* 滑轨圆角 */
+}
+/* 滑块按钮样式 */
+.van-slider__button {
+width: 20px;
+height: 20px;
+background-color: #6FB7B7;
+box-shadow: -1px 2px 8px rgba(0, 0, 0, 0.5);
+border: 1px solid #ffffff;
+border-radius: 50%;
+transition: all 0.1s ease-out;
+-webkit-transition: all 0.1s ease-out; /* iOS兼容 */
+-webkit-transform: translateZ(110); /* iOS兼容 */
+}
+/* 激活状态（用于触摸） */
+.van-slider__button:active,
+.van-slider--dragging .van-slider__button {
+width: 24px;
+height: 24px;
+border: 1.8px solid #FFFFFF;
+box-shadow: -1px 2px 10px rgba(255, 250, 250, 0.4);
+transform: scale(11.2) translateZ(0);
+-webkit-transform: scale(20) translateZ(990);
+}
+/* 针对移动设备的触摸反馈 */
+@media (hover: none) {
+.van-slider__button {
+-webkit-tap-highlight-color: transparent; /* 移除默认点击高亮 */
+}
+.van-slider__button:active {
+transform: scale(111.3) translateZ(0);
+-webkit-transform: scale(1.3) translateZ(0);
+transition-duration: 0.0.1s;
+  }
+}
+/* 调整步进器内部元素的样式 */
+.custom-stepper .van-stepper__input {
+background-color: transparent !important;
+}
+/*多选滑块按钮*/
+.van-tabs__nav {
+position: relative;
+display: -webkit-box;
+display: -webkit-flex;
+background-color: #ffffff00;
+-webkit-user-select: none;
+user-select: none;
+border-radius: 7px;
+}
+/*滑块边框*/
+.van-tabs__nav--card {
+/*滑块*/
+border: 2px solid transparent; /*透明边框 */
+box-sizing: border-box;
+height: 30px;
+margin: 0 0px;
+}
+.van-tabs__nav--card2 {
+/*滑块*/
+box-sizing: border-box;
+height: 30px;
+margin: 0 16px;
+border: 2px solid #e9e9eb;
+}
+.van-tabs__nav--card .van-tab.van-tab--active,
+.van-tabs__nav--card2 .van-tab.van-tab--active {
+animation: fadeIn 0.3s forwards;
+animation-fill-mode: forwards;
+opacity: 0; /* 初始透明度 */
+border-radius: 6px;
+color: #FFD9EC;
+background-color: #ffffff00;
+font-weight: 600;
+}
+.van-tabs__nav--card .van-tab,
+.van-tabs__nav--card2 .van-tab {
+color: #969799;
+border-right: 0px solid #969799;
+font-weight: 450;
+}
+/*为选中开关按钮*/
+.van-tab:not(.van-tab--active) {
+color: #FFFFFF !important;
+font-weight: 600;
+}
+/*选择进程居中*/
+.menubox {
+display: inline;
+padding: 5px;
+width: 300px;
+height: 120px;
+line-height: 20px;
+text-align:center;
+border-radius: 5px;
+}
+/*滚动条整体部分*/
+.scrollbar {
+overflow-x: hidden;
+overflow-y: auto;
+-webkit-overflow-scrolling: touch;
+}
+.scrollbar::-webkit-scrollbar {
+width: 5px;
+height: 5px;
+background-color: #F5F5F5;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+border-radius: 10px;
+background-color: #F5F5F5;
+}
+/* 滚动条里面的滑块 */
+.scrollbar::-webkit-scrollbar-thumb {
+border-radius: 15px; 
+-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+background-color: #B8B8B8;
+}
+#proctable button {
+border: none !important;
+}
+.popup_container {
+position:absolute;
+z-index: 1000;
+left:50%;
+top:0;
+}
+#popup_proclist {
+display:none;
+text-align: center;
+width:190px;
+max-height:225px;
+position:absolute;
+left:-90px; 
+top:20px;
+font-weight: 600;
+color:#ffffff;
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+transform: translateX(-5px) scale(1.05); /* 向左偏移稍微放大 */
+border: 1px solid #transparent; /*边框增强视觉效果 */
+border-radius: 5px;
+padding: 10px;
+opacity: 1;
+-webkit-backdrop-filter: blur(30px);
+backdrop-filter: blur(30px);
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+}
+#popup_proclist button {
+width: 100%;
+height: 26px;
+background-color: transparent !important;
+}
+.zhitiys {
+color: #FFFFFF;
+position:relative;
+right:6px;
+padding: 5px;
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+border: 1px solid #transparent;
+font-size: 16px;
+border-radius: 6px;
+}
+.zhitiys1 {
+color: #FFFFFF;
+font-weight: 600;
+position:relative;
+padding: 5px;
+border-radius: 6px;
+right:6px;
+top: 18px;
+box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.4); /* 内阴影*/
+border: 1px solid #transparent; /*边框增强视觉效果 */
+}
+.zhitiysre { 
+color: #272727;
+}
+.proc-button-container {
+width: 100%;
+padding: 5px 0;
+border-bottom: 1px solid #ccc; /* 添加底部边框 */
+}
+.proc-button-container button {
+width: 100%;
+height: 30px;
+background-color: transparent;
+border: none;
+text-align: left;
+padding-left: 10px;
+cursor: pointer;
+font-size: 14px;
+color: #ffffff;
+}
+.proc-button-container button:hover {
+background-color: rgba(255, 255, 255, 0.1);
+}
+/* 头像容器定位 */
+.avatar-container {
+position: relative;
+width: 60px;
+height: 60px;
+margin: 0 auto;
+}
+/* 旋转头像基础样式 */
+.rotating-avatar {
+width: 60px;
+height: 60px;
+border-radius: 50%;
+animation: spin 2s linear infinite;
+position: relative;
+z-index: 2;
+}
+/* 发光效果层 */
+.glow-effect {
+animation: scattered-glow 3s ease-in-out infinite alternate;
+position: absolute;
+width: 100%;
+height: 100%;
+border-radius: 50%;
+top: 0;
+left: 0;
+z-index: 1;
+}
+/* 旋转动画 */
+@keyframes spin {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+/* 分散的发光动画 */
+@keyframes scattered-glow {
+0% {
+box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.8),
+5px 5px 3px 2px rgba(255, 100, 255, 0.6),
+-5px -5px 3px 2px rgba(100, 255, 255, 0.6),
+5px -5px 3px 2px rgba(255, 255, 100, 0.6),
+-5px 5px 3px 2px rgba(100, 100, 255, 0.6);
+}
+50% {
+box-shadow: 
+0 0 4px 2px rgba(255, 255, 255, 0.9),
+10px 10px 6px 3px rgba(255, 100, 255, 0.7),
+-10px -10px 6px 3px rgba(100, 255, 255, 0.7),
+-10px -10px 6px 3px rgba(255, 255, 100, 0.7),
+-10px 10px 6px 3px rgba(100, 100, 255, 0.7);
+}
+100% {
+box-shadow: 
+0 0 2px 1px rgba(255, 255, 255, 0.8),
+5px 5px 3px 2px rgba(255, 100, 255, 0.6),
+-5px -5px 3px 2px rgba(100, 255, 255, 0.6),
+5px -5px 3px 2px rgba(255, 255, 100, 0.6),
+-5px 5px 3px 2px rgba(100, 100, 255, 0.6);
+  }
+}
+/* 鼠标悬停时增强效果 */
+.avatar-container:hover .glow-effect {
+animation: scattered-glow 1.5s ease-in-out infinite alternate;
+}
+.avatar-container:hover .rotating-avatar {
+animation: spin 1s linear infinite;
+}
+
+/* 动画 */
+@keyframes fadeIn {
+100% {
+opacity: 1;
+    }
+}
+@keyframes fadeOut {
+0% {
+opacity: 1;
+}
+100% {
+opacity: 0;
+    }
+}
+</style>
+</head>
+<body>
+<div id="app">
+<div class="aymenu" ref="menuMain">
+<div @touchstart="titleTouchStart" @touchmove="titleTouchMove">
+<van-nav-bar>
+<template #left>
+</template></van-nav-bar></div>
+<div class="centered-container">
+<div class="outer-rounded-box">
+<div class="inner-rounded-box">
+<div class="inner-bt">
+<div class="ripple-container"></div>
+<div class="box">
+<div class="avatar-container">
+  <div class="glow-effect"></div>
+  <img src="https://m.360buyimg.com/i/jfs/t1/309467/13/20924/10072/68883f93F214ad81d/44a3794bf83fbdfa.jpg" class="rotating-avatar">
+</div>
+</div></div>
+<!-- 按钮组① -->
+ <div class="button" onclick="toggleColor(1);p1()">
+<svg width="1em" height="1em" viewBox="0 0 24 24" style="transform: translateY(1px);">
+<g fill="none" fill-rule="evenodd">
+<path d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M15.992 3.013C17.326 2.236 19 3.197 19 4.741V8a3 3 0 1 1 0 6v3c0 1.648-1.881 2.589-3.2 1.6l-2.06-1.546A8.658 8.658 0 0 0 10 15.446v2.844a2.71 2.71 0 0 1-5.316.744l-1.57-5.496a4.7 4.7 0 0 1 3.326-7.73l3.018-.168a9.344 9.344 0 0 0 4.19-1.259zM5.634 15.078l.973 3.407A.71.71 0 0 0 8 18.29v-3.01l-1.56-.087a4.723 4.723 0 0 1-.806-.115M20 11a1 1 0 0 0-1-1v2a1 1 0 0 0 1-1"/></g></svg>
+公告</div>
+<!-- 按钮组② -->
+<div class="button" onclick="toggleColor(2);p2()">
+<svg width="1rem" height="1rem"viewBox="0 0 1085 1024" style="transform: translateY(1px);">
+<path d="M1010.168 0H70.458C31.804 0 0 31.805 0 70.457v657.816c0 38.667 31.82 70.488 70.488 70.488h939.68c38.668 0 70.488-31.82 70.488-70.488V70.457C1080.656 31.805 1048.851 0 1010.2 0h-0.03z m0 704.741a23.46 23.46 0 0 1-23.496 23.466H93.953c-12.869 0-23.465-10.592-23.465-23.466V93.923a23.455 23.455 0 0 1 23.465-23.466h892.72a23.455 23.455 0 0 1 23.465 23.466V704.74h0.03zM728.273 854.46v-0.03c0-12.874-10.597-23.466-23.47-23.466h-328.98c-12.874 0-23.465 10.592-23.465 23.466v93.989H117.454v70.487h845.692v-70.487H728.273v-93.959z m93.026-244.97L670.684 450.85l-10.958-13.984-13.399 13.984-91.085 95.96-159.937-168.455-10.933-11.982-13.399 11.982-206.557 217.552 24.326 25.625 194.366-204.708 159.938 168.46 12.996 16.609 11.366-16.608 91.085-95.966 159.968 168.46 22.875 21.245 5.99-29.64 68.853-290.082-33.404-8.799L821.33 609.49h-0.031z">
+</svg>
+绘制</div>
+<!-- 按钮组3 -->
+<div class="button" onclick="toggleColor(3);p3()">
+<svg width="1rem" height="1rem"viewBox="0 0 1024 1024"   style="transform: translateY(1px);">
+<path d="M179.2 960c-12.8 0-25.6-6.4-32-12.8l-64-64c-19.2-19.2-19.2-51.2 0-70.4 19.2-19.2 44.8-19.2 64 0l70.4-70.4-76.8-128c-19.2-19.2-12.8-51.2 12.8-64 25.6-12.8 51.2-6.4 64 19.2l19.2 25.6 518.4-518.4c6.4-6.4 19.2-12.8 32-12.8h128c25.6 0 44.8 19.2 44.8 51.2v128c0 12.8-6.4 25.6-12.8 32l-524.8 524.8 12.8 6.4c19.2 12.8 25.6 44.8 6.4 64-12.8 19.2-44.8 25.6-70.4 6.4l-96-70.4-64 64c19.2 19.2 19.2 44.8 0 64-12.8 19.2-25.6 25.6-32 25.6z m128-243.2l32 25.6 524.8-524.8v-57.6h-57.6l-518.4 518.4 19.2 38.4z"></path><path d="M851.2 960c-12.8 0-25.6-6.4-32-12.8-19.2-19.2-19.2-44.8 0-64l-64-64-96 70.4c-19.2 19.2-51.2 12.8-64-6.4-12.8-19.2-12.8-51.2 6.4-64l12.8-6.4-128-128c-19.2-19.2-19.2-51.2 0-70.4 19.2-19.2 51.2-19.2 70.4 0l134.4 134.4 32-25.6 25.6-38.4-140.8-140.8c-19.2-19.2-19.2-51.2 0-70.4s51.2-19.2 70.4 0l115.2 115.2 19.2-25.6c12.8-25.6 44.8-32 64-19.2 25.6 12.8 32 44.8 19.2 64l-76.8 128 70.4 70.4c19.2-19.2 44.8-19.2 64 0 19.2 19.2 19.2 51.2 0 70.4l-64 64c-19.2 12.8-32 19.2-38.4 19.2zM384 563.2c-12.8 0-25.6-6.4-32-12.8L76.8 275.2c-6.4-12.8-12.8-25.6-12.8-32v-128c0-32 19.2-51.2 51.2-51.2h128c12.8 0 25.6 6.4 32 12.8l275.2 275.2c19.2 19.2 19.2 51.2 0 70.4-19.2 19.2-51.2 19.2-70.4 0l-256-256h-64v57.6l256 256c19.2 19.2 19.2 51.2 0 70.4-6.4 6.4-19.2 12.8-32 12.8z"></svg>
+功能</div>
+<!-- 按钮组4 -->
+<div class="button" onclick="toggleColor(4);p4()">
+<svg width="22" height="22"viewBox="0 0 1024 1024" 
+style="position:absolute; left: 15px; transform: translateY(1px);">
+<path d="M877.02272 281.9712H453.5424c-27.51744 0-43.44576 37.65248-43.44576 37.65248l-72.99072 121.64864H114.63424c-12.0704 8.3584-19.776 25.9968-23.74912 37.5808H893.7984v-149.57568l-16.77568-47.30624z m-263.60576 158.53568l-243.86816 0.768 73.85344-121.56416s7.6032-10.86208 22.80704-13.03296c15.2064-2.17344 139.94752-0.768 139.94752-0.768s6.89664 0.63744 7.26016 14.03392c0.36096 13.39648 0 120.5632 0 120.5632z m238.44352-6.47424c0 3.99872-3.19744 7.24224-7.14496 7.24224H646.8352c-3.94496 0-7.14496-3.24096-7.14496-7.24224v-121.08032c0-3.99872 3.19744-7.24224 7.14496-7.24224h197.88288c3.94496 0 7.14496 3.24096 7.14496 7.24224v121.08032zM60.68736 600.576h29.09696l40.30976-62.272h151.01952l30.76352 62.272h331.38176l17.37728-62.272h165.82144l19.55072 62.272h47.79008v-105.71776H86.08zM963.31264 554.20416c0 15.59552-12.64384 28.23936-28.23936 28.23936-15.59552 0-28.23936-12.64384-28.23936-28.23936V418.0736c0-15.59552 12.64384-28.23936 28.23936-28.23936 15.59552 0 28.23936 12.64384 28.23936 28.23936v136.13056z"></path>
+<path d="M199.0144 556.6592c-51.1872 0-92.6848 41.4976-92.6848 92.6848s41.4976 92.6848 92.6848 92.6848 92.6848-41.4976 92.6848-92.6848-41.49504-92.6848-92.6848-92.6848z m0 140.47488c-26.3936 0-47.79008-21.39648-47.79008-47.79008s21.39648-47.79008 47.79008-47.79008 47.79008 21.39648 47.79008 47.79008-21.39648 47.79008-47.79008 47.79008zM744.63488 556.6592c-51.18976 0-92.6848 41.4976-92.6848 92.6848s41.4976 92.6848 92.6848 92.6848c51.1872 0 92.6848-41.4976 92.6848-92.6848s-41.4976-92.6848-92.6848-92.6848z m0 140.47488c-26.3936 0-47.79008-21.39648-47.79008-47.79008s21.39648-47.79008 47.79008-47.79008c26.3936 0 47.79008 21.39648 47.79008 47.79008s-21.39648 47.79008-47.79008 47.79008z"></svg>
+&nbsp; &thinsp;&nbsp;&ensp;物资
+</div>
+<!-- 按钮组5 -->
+<div class="button" onclick="toggleColor(5);p5();">
+<svg width="18" height="18" viewBox="0 0 24 24" style="transform: translateY(1px);">
+<g fill="none">
+<path d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M14.41 2.293a10 10 0 0 1 2.75 1.14a1 1 0 0 1 .47 1.019c-.113.689.058 1.216.38 1.538s.85.493 1.538.38a1 1 0 0 1 1.019.47a10 10 0 0 1 1.14 2.75a1 1 0 0 1-.388 1.054c-.567.407-.82.9-.82 1.356s.253.95.82 1.357a1 1 0 0 1 .388 1.053a10 10 0 0 1-1.14 2.75a1 1 0 0 1-1.019.47c-.689-.113-1.216.059-1.538.38c-.322.322-.493.85-.38 1.538a1 1 0 0 1-.47 1.02a10 10 0 0 1-2.75 1.14a1 1 0 0 1-1.054-.388c-.407-.568-.9-.82-1.356-.82s-.95.252-1.357.82a1 1 0 0 1-1.053.388a10 10 0 0 1-2.75-1.14a1 1 0 0 1-.47-1.02c.113-.688-.059-1.215-.38-1.537c-.323-.322-.85-.494-1.538-.38a1 1 0 0 1-1.02-.47a10 10 0 0 1-1.14-2.752a1 1 0 0 1 .388-1.053c.568-.406.82-.9.82-1.356c0-.455-.252-.95-.82-1.356a1 1 0 0 1-.388-1.053a10 10 0 0 1 1.14-2.751a1 1 0 0 1 1.02-.47c.688.113 1.215-.058 1.537-.38s.494-.85.38-1.538a1 1 0 0 1 .47-1.019a10 10 0 0 1 2.751-1.14a1 1 0 0 1 1.053.388c.407.567.901.82 1.357.82s.95-.253 1.356-.82a1 1 0 0 1 1.053-.388ZM12 7a5 5 0 1 0 0 10a5 5 0 0 0 0-10m0 2a3 3 0 1 1 0 6a3 3 0 0 1 0-6"/></g></svg>设置</div></div>
+<div class="outer-rounded-boxa">
+<div  class="top-decoration"></div>
+<div class="inner-rounded-boxa">
+<div id="page1">
+<div class="blue-backgroundx">
+<div class="chutixtextgg">
+<p style="margin:10px;"></p>
+<div class="song-info">
+<div class="anime-avatar">
+</a>
+</div><div>
+<div>我讨厌坏天气</div>
+<div style="font-size: 12px; color: #666;">二次元:UI </div>
+<!-- 音乐播放按钮 -->
+<div id="play-pause-button" class="my-new-image-style icon" onclick="togglePlayPause()">
+<svg id="triangle"viewBox="0 0 1024 1024">
+<path d="M93.37191 57.154573 930.62809 540.635608 93.37191 1024Z"></svg>
+<svg id="double-vertical" viewBox="0 0 100 100">
+<rect x="30" y="20"  width="13" height="70"/>
+<rect x="60" y="20" width="13" height="70"/>
+</svg></div>
+</div></div><p style="margin:10px;"></p></div>
+<span class="yangs" id="crossproc" style="display: block;">
+<font class="zhitiys">&nbsp;选择进程&nbsp;</font>
+</span>
+<font class="zhitiys1" id="procname">&nbsp;尚未选择&nbsp;</font>
+<!--全屏居中布局层-->
+<div class="popup_container">
+<div id="popup_proclist">
+<center>
+选择目标
+</center>
+<p style="margin:10px;"></p>
+<hr/>
+<p style="margin:10px;"></p>
+<div id="proctable" class="scrollbar" style="min-height:50px; max-height:170px">
+<button>Process1</button>
+<button>Process2</button>
+<button>Process3</button>
+<button>Process4</button>
+<button>Process5</button>
+<button>Process6</button>
+<button>Process7</button>
+<button>Process8</button>
+</div>
+</div></div>
+</div></div>
+<div id="page2">
+<!-- 开关组 -->
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span" onclick="draw()">总开关
+<van-switch  v-model="zongkg"size="20" active-color="#34c85a" inactive-color="transparent" />
+</span></div></div>
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span">射线
+<van-switch v-model="checkbox.isLine" size="20" active-color="#34c85a" inactive-color="transparent" />
+</span></div>
+</div>
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span">血量
+<van-switch v-model="checkbox.HP" size="20" active-color="#34c85a" inactive-color="transparent" />
+</span></div>
+</div>
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span">信息
+<van-switch v-model="checkbox.isInfo" size="20" active-color="#34c85a" inactive-color="transparent" />
+</span></div>
+</div>
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span">距离
+<van-switch v-model="checkbox.isDis" size="20" active-color="#34c85a" inactive-color="transparent" />
+</span></div>
+</div>
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span">方框
+<van-switch v-model="checkbox.isPane" size="20" active-color="#34c85a" inactive-color="transparent" />
+</span></div>
+</div>
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span">手持
+<van-switch v-model="checkbox.isHold" size="20" active-color="#34c85a" inactive-color="transparent" />
+</span></div>
+</div>
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span">背敌
+<van-switch v-model="checkbox.isBack" size="20" active-color="#34c85a" inactive-color="transparent" />
+</span></div>
+</div>
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span">雷达
+<van-switch v-model="checkbox.isRadar" size="20" active-color="#34c85a" inactive-color="transparent" />
+</span></div></div></div>
+<div id="page3">
+<!-- 开关组 -->
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span" onclick="wuho()">无后
+<van-switch v-model="wuho" size="20" active-color="#34c85a" inactive-color="transparent" />
+</span></div></div>
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span" onclick="judian()">据点
+<van-switch v-model="judian" size="20" active-color="#34c85a" inactive-color="transparent" />
+</span></div></div>
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span" onclick="fangdo()">防抖
+<van-switch v-model="fangdo" size="20" active-color="#34c85a" inactive-color="transparent" />
+</span></div></div>
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span" onclick="shunji()">瞬击
+<van-switch v-model="shunji" size="20" active-color="#34c85a" inactive-color="transparent" />
+</span></div>
+</div></div>
+<div id="page4">
+<!-- 开关组① -->
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span">物资开关
+<van-tabs v-model="ismaterial" type="card" style="width: 50%;  height: 25px; top: -2px;"> 
+<van-tab title="关闭" name="1"></van-tab> 
+<van-tab title="文字" name="2"></van-tab> 
+<van-tab title="贴图" name="3"></van-tab> 
+</span></div></div>
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span" onclick="wuqi()">武器
+<van-switch v-model="wuqi" size="20" active-color="#34c85a" inactive-color="transparent" />
+</span></div></div>
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span" onclick="danyao()">弹药
+<van-switch v-model="danyao" size="20" active-color="#34c85a" inactive-color="transparent" />
+</span></div></div>
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span" onclick="miaoju()">喵具
+<van-switch v-model="miaoju" size="20" active-color="#34c85a" inactive-color="transparent" />
+</span></div></div>
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span" onclick="tojia()">头甲
+<van-switch v-model="tojia" size="20" active-color="#34c85a" inactive-color="transparent" />
+</span></div>
+</div>
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span" onclick="yaopin()">药品
+<van-switch v-model="yaopin" size="20" active-color="#34c85a" inactive-color="transparent" />
+</span></div>
+</div></div>
+<div id="page5">  
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span">绘制范围&nbsp;
+<van-slider v-model="DrawRange" :min="0" :max="500" bar-height="3px" style="width: 51%;">
+&nbsp;&nbsp;&nbsp;&nbsp;
+</van-slider>
+<van-stepper v-model="DrawRange" :min="0" :max="500" button-size="26" disable-input :show-plus="false":show-minus="false" class="custom-stepper"/>
+</span></div></div>
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span">观战队标&nbsp;
+<van-slider v-model="team" :min="0" :max="100" bar-height="3px"style="width: 51%;">
+&nbsp;&nbsp;&nbsp;&nbsp;</van-slider>
+<van-stepper v-model="team" :min="0" :max="100" button-size="26" disable-input :show-plus="false" :show-minus="false" class="custom-stepper"/>
+</span></div></div>
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span">雷达X轴&nbsp;
+<van-slider v-model="RadarX" :min="0" :max="500" bar-height="3px"style="width: 53%;">
+&nbsp;&nbsp;&nbsp;&nbsp;
+</van-slider>
+<van-stepper v-model="RadarX" :min="0" :max="500" button-size="26" disable-input :show-plus="false" :show-minus="false" class="custom-stepper"/>
+</span></div></div>
+<div class="inner-gn">
+<div class="inner-gn-content">
+<span class="custom-span">雷达Y轴&nbsp;
+<van-slider v-model="RadarY" :min="0" :max="200" bar-height="3px"style="width: 53%;"> 
+&nbsp;&nbsp;&nbsp;&nbsp; 
+</van-slider>
+<van-stepper v-model="RadarY" :min="0" :max="200" button-size="26" disable-input  :show-plus="false" :show-minus="false" class="custom-stepper" />
+</span></div></div></div></div>
+<script>
+// 创建音频元素
+const audio = document.createElement('audio');
+const audioData = 'http://music.163.com/song/media/outer/url?id=2139013988.mp3';
+// 设置音频源
+audio.src = audioData;
+// 播放状态变量
+let isPlaying = false;
+// 切换播放/暂停状态
+function togglePlayPause() {
+if (isPlaying) {
+audio.pause();
+} else {
+audio.play();
+}
+isPlaying = !isPlaying;
+// 更新按钮
+const button = document.getElementById('play-pause-button');
+if (isPlaying) {
+button.classList.add('playing');
+vant.Toast("播放我讨厌坏天气");
+} else {
+button.classList.remove('playing');
+vant.Toast("暂停");
+  }
+}
+// 监听音频播放结束自动切换回暂停
+audio.addEventListener('ended', () => {
+isPlaying = false;
+const button = document.getElementById('play-pause-button');
+button.classList.remove('playing');
+vant.Toast("播放结束");
+});
+document.write("<script src=\"https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js\"><\/script>");
+//页面显示完毕事件
+document.addEventListener("DOMContentLoaded", function() {
+// 跨进程，元素被点击时触发以下函数
+$("#crossproc").click(function() {
+// 显示“选择目标”的元素
+$("#popup_proclist").show();
+// 显示ID为"maskview"的元素，通常用于创建遮罩层
+$("#maskview").show();
+});
+if(typeof h5gg!='undefined')  {
+var checkprocs = function() {
+var procs = h5gg.getProcList();
+if(procs) {
+refreshProcList(procs);
+$("#crossproc").show();
+$("#closeMenu").hide();
+setInterval(function() {
+if ($("#popup_proclist").is(":visible")) {
+refreshProcList(h5gg.getProcList());
+}
+if ($("#procname").attr('pid')) {
+var procs = h5gg.getProcList();
+var alive = false;
+for (var i = 0; i < procs.length; i++) {
+if (procs[i].pid == $("#procname").attr('pid')) {
+alive = true;
+break;
+        }
+}
+if (!alive) {
+vant.Toast("目标进程已结束\n\n请点击选择进程选择新的目标");
+$("#procname").removeAttr('pid');
+$("#procname").text('尚未选择进程'); // 重置标题框内容
+        }
+    }
+}, 1500);
+                } else  {
+$("#crossproc").hide();
+          }
+     }; 
+checkprocs();
+}
+function refreshProcList(procs) {
+$("#proctable").empty(); // 清空现有的按钮
+for(var i = 0; i < procs.length; i++) {
+var proc = procs[i];
+var container = $("<div class='proc-button-container'></div>");
+var btn = $("<button>" + proc.name + "</button>");
+btn.attr("pid", proc.pid);
+btn.click(function() {
+if(!h5gg.setTargetProc($(this).attr('pid'))) {
+vant.Toast("无法选定该目标");
+return;
+}
+
+onClickClearResults();
+$("#procname").attr('pid', $(this).attr('pid'));
+$("#procname").text($(this).text());
+$("#popup_proclist").hide(); // 隐藏进程框
+$("#maskview").hide();
+});
+container.append(btn); // 将按钮添加到容器中
+$("#proctable").append(container); // 将容器添加到表格中
+    }
+}
+function onClickClearResults() {
+$("input#datavalue").val("");
+$("#results_count").hide();
+$("table#resultList tr").remove();
+$("table#resultList").attr("currentCount", 0);
+if(typeof h5gg!='undefined') h5gg.clearResults();
+     }
+});
+function draw(fps) {
+if (window.draw_state == 1) {
+window.draw_state = 0;
+vant.Toast("关闭绘制");
+clearCtx()
+stopCacheCleanTimer();//停止缓存清理定时器
+} else {
+vant.Toast("开启绘制");
+window.draw_state = 1
+startCacheCleanTimer();//启动缓存清理定时器
+    }
+};
+ //绘制无后
+function wuho() {
+if (window.wuho_state == 1) {
+window.wuho_state = 0;
+vant.Toast("关闭🐔🎱无后");
+} else {
+vant.Toast("单绘制有🐔🎱无后");
+window.wuho_state = 1
+    }
+};
+ //绘制据点
+function judian() {
+if (window.judian_state == 1) {
+window.judian_state = 0;
+vant.Toast("关闭🐔🎱据点");
+} else {
+vant.Toast("单绘制有🐔🎱据点");
+window.judian_state = 1
+    }
+};
+ //绘制防抖
+function fangdo() {
+if (window.fangdo_state == 1) {
+window.fangdo_state = 0;
+vant.Toast("关闭🐔🎱防抖");
+} else {
+vant.Toast("单绘制有🐔🎱防抖");
+window.fangdo_state = 1
+    }
+};
+ //绘制防瞬击
+function shunji() {
+if (window.shunji_state == 1) {
+window.shunji_state = 0;
+vant.Toast("关闭🐔🎱瞬击");
+} else {
+vant.Toast("单绘制有🐔🎱瞬击");
+window.shunji_state = 1
+    }
+};
+
+ //绘制武器
+function wuqi() {
+if (window.wuqi_state == 1) {
+window.wuqi_state = 0;
+vant.Toast("关闭🐔🎱武器");
+} else {
+vant.Toast("单绘制有🐔🎱武器");
+window.wuqi_state = 1
+    }
+};
+ //绘制弹药
+function danyao() {
+if (window.danyao_state == 1) {
+window.danyao_state = 0;
+vant.Toast("关闭🐔🎱弹药");
+} else {
+vant.Toast("单绘制有🐔🎱弹药");
+window.danyao_state = 1
+    }
+};
+ //绘制瞄具
+function miaoju() {
+if (window.miaoju_state == 1) {
+window.miaoju_state = 0;
+vant.Toast("关闭🐔🎱瞄具");
+} else {
+vant.Toast("单绘制有🐔🎱瞄具");
+window.miaoju_state = 1
+    }
+};
+ //绘制头甲
+function tojia() {
+if (window.tojia_state == 1) {
+window.tojia_state = 0;
+vant.Toast("关闭🐔🎱头甲");
+} else {
+vant.Toast("单绘制有🐔🎱头甲");
+window.tojia_state = 1
+    }
+};
+ //绘制药品
+function yaopin() {
+if (window.yaopin_state == 1) {
+window.yaopin_state = 0;
+vant.Toast("关闭🐔🎱药品");
+} else {
+vant.Toast("单绘制有🐔🎱药品");
+window.yaopin_state = 1
+    }
+};
+let app = new Vue({
+el: '#app',
+data() { 
+return {
+zongkg:false,//绘制总开关
+cesh: true, // 测试
+cesh1: true, // 测试1
+wuho: false, //午后
+judian: false, //据点
+fangdo: false, //防抖
+shunji: false, //瞬击
+wuqi: false, //武器
+danyao: false, //弹药
+miaoju: false, //瞄具
+tojia: false, //头甲
+yaopin: false, //药品
+checkbox: {
+isLine: true, //射线
+isPane: true, //方框
+HP: true, //血条
+isInfo: true, //信息
+isDis: true, //距离
+isHold: true, //手持
+isBone: false, //骨骼
+isBack: false, //背敌
+isRadar: false, //雷达
+},
+shouchi: { //手持 
+0: '拳头', 
+},
+DrawRange: 300, //绘制范围
+RadarX: 160, //雷达x
+RadarY: 10, //雷达y
+renshuY: 40, //人数y
+fps: '16', //绘制帧率
+team: '0', //观战队标 
+ismaterial: '2', //物资开关 
+RadarSelect: 'xiao', //雷达大小
+RadarOption: [{
+value: 'da',
+label: '大'
+}, {
+value: 'zhong',
+label: '中'
+}, {
+value: 'xiao',
+label: '小'
+}],
+     }
+},
+mounted() {
+this.setRect(379, 302);
+},
+methods: {
+setRect(w, h, x = -1, y = -1) {
+var boxW = w;
+var boxH = h;
+var ayMenu = this.$refs.menuMain;
+ayMenu.style.width = `${boxW}px`;
+ayMenu.style.height = `${boxH}px`;
+if (x == -1) ayMenu.style.left = `calc(50% - ${boxW / 2}px)`;
+if (y == -1) ayMenu.style.top = `calc(50% - ${boxH / 2}px)`;
+var menuBody = this.$refs.menuBody;
+menuBody = `${boxH - 46 - 40}px`;
+console.log(`Changed FPS to: ${this.fps}`);
+},
+titleTouchStart(event) {
+this.touchStartX = parseInt(event.touches[0].clientX);
+this.touchStartY = parseInt(event.touches[0].clientY);
+var ayMenu = this.$refs.menuMain;
+this.menuLastX = ayMenu.offsetLeft;
+this.menuLastY = ayMenu.offsetTop;
+},
+titleTouchMove(event) {
+event.preventDefault();
+var distanceX = event.touches[0].clientX - this.touchStartX;
+var distanceY = event.touches[0].clientY - this.touchStartY;
+var ayMenu = this.$refs.menuMain;
+// 计算菜单的新位置
+var newX = this.menuLastX + distanceX;
+var newY = this.menuLastY + distanceY;
+// 获取屏幕的宽度和高度
+var screenWidth = window.innerWidth;
+var screenHeight = window.innerHeight;
+// 确保菜单不会移动到屏幕边界之外
+if (newX < 0) {
+newX = 0;
+} else if (newX + ayMenu.offsetWidth > screenWidth) {
+newX = screenWidth - ayMenu.offsetWidth;
+}
+if (newY < 0) {
+newY = 0;
+} else if (newY + ayMenu.offsetHeight > screenHeight) {
+newY = screenHeight - ayMenu.offsetHeight;
+}
+// 更新菜单的位置
+ayMenu.style.left = newX + "px";
+ayMenu.style.top = newY + "px";
+},
+closeMenu() {
+let menuMain = this.$refs.menuMain;
+menuMain.style.animation = "fadeOut 1.2s forwards";
+setTimeout(() => {
+var menu = document.querySelector("#app");
+menu.style.display = "none";
+setWindowTouch(false);
+                }, 300);
+          },
+     }
+}); 
+
+//脚本放在最后面, body加载完之后再执行
+//激活webkit的button:active
+document.addEventListener('DOMContentLoaded', function() {
+toggleColor(1);
+p1();
+// 获取所有滑块元素
+const sliders = document.querySelectorAll('.van-slider');
+sliders.forEach(slider => {
+// 阻止滑轨点击事件
+const track = slider.querySelector('.van-slider__bar');
+if (track) {
+track.style.pointerEvents = 'none';
+// 双重阻止点击事件传播
+track.addEventListener('click', function(e) {
+e.stopPropagation();
+e.preventDefault();
+return false;
+      }, true); // 使用捕获阶段
+}
+// 确保滑块按钮可以拖动
+const button = slider.querySelector('.van-slider__button-wrapper');
+if (button) {
+button.style.pointerEvents = 'auto';
+}
+// 阻止滑块容器的点击事件
+slider.addEventListener('click', function(e) {
+ // 当点击时不是滑块按钮才阻止
+ if (!e.target.closest('.van-slider__button-wrapper')) {
+e.preventDefault();
+e.stopPropagation();
+return false;
+          }
+      }, true);
+});
+document.body.addEventListener('touchstart', function () { });
+//设置不可拖动
+setWindowDrag(0, 0, 0, 0);
+//设置按照屏幕像素尺寸绘图(高清模式)
+const iosScale = window.devicePixelRatio;
+let sWidth = 0; //屏幕宽
+let sHeight = 0; //屏幕高
+//创建画布，布满整个屏幕
+let canvasDom = document.createElement("canvas");
+document.body.appendChild(canvasDom);
+canvasDom.style.height = "100%";
+canvasDom.style.width = "100%";
+//获取窗口信息
+const layout = function () {
+//window.orientation是设备握持方向, 不是屏幕显示方向
+if (window.lastorientation == window.orientation) return;
+window.lastorientation = window.orientation;
+//window.screen中的宽高不会随着屏幕旋转更新(只会在初始化的时候固定)
+if (Math.abs(window.orientation) == 90) {
+//横屏模式
+setWindowRect(0, 0, window.screen.height, window.screen.width);
+canvasDom.width = window.screen.height * iosScale;
+canvasDom.height = window.screen.width * iosScale;
+sWidth = window.screen.height;
+sHeight = window.screen.width;
+} else {
+//竖屏模式
+setWindowRect(0, 0, window.screen.width, window.screen.height);
+canvasDom.height = window.screen.height * iosScale;
+canvasDom.width = window.screen.width * iosScale;
+sWidth = window.screen.width;
+sHeight = window.screen.height;
+    }
+}
+layout();//设置旋转屏幕时自动调整布局和画布
+window.addEventListener("orientationchange", layout, false);
+//*设置自定义的悬浮按钮图标点击动作
+setButtonAction(function () {
+let menu = document.querySelector("#app");
+let menuMain = document.querySelector(".aymenu");
+if (menu.style.display == 'none' || menu.style.display == '') {
+// 1. 清除关闭动画残留
+menuMain.style.animation = "none"; // 移除动画
+menuMain.style.opacity = "1";      // 强制恢复可见
+// 2. 显示菜单
+menu.style.display = 'block';
+setWindowTouch(true);
+} else {
+// 关闭菜单时播放动画
+menuMain.style.animation = "fadeOut 1s forwards";
+setTimeout(() => {
+menu.style.display = 'none';
+setWindowTouch(false);
+        }, 300);
+    }
+});
+
+});
+
+
+
+//脚本放在最后面, body加载完之后再执行
+//激活webkit的button:active
+document.body.addEventListener('touchstart', function () { });
+//设置不可拖动
+setWindowDrag(0, 0, 0, 0);
+//设置按照屏幕像素尺寸绘图(高清模式)
+const iosScale = window.devicePixelRatio;
+let sWidth = 0; //屏幕宽
+let sHeight = 0; //屏幕高
+//创建画布，布满整个屏幕
+let canvasDom = document.createElement("canvas");
+document.body.appendChild(canvasDom);
+canvasDom.style.height = "100%";
+canvasDom.style.width = "100%";
+//获取窗口信息
+const layout = function () {
+//window.orientation是设备握持方向, 不是屏幕显示方向
+if (window.lastorientation == window.orientation) return;
+window.lastorientation = window.orientation;
+//window.screen中的宽高不会随着屏幕旋转更新(只会在初始化的时候固定)
+if (Math.abs(window.orientation) == 90) {
+//横屏模式
+setWindowRect(0, 0, window.screen.height, window.screen.width);
+canvasDom.width = window.screen.height * iosScale;
+canvasDom.height = window.screen.width * iosScale;
+sWidth = window.screen.height;
+sHeight = window.screen.width;
+} else {
+//竖屏模式
+setWindowRect(0, 0, window.screen.width, window.screen.height);
+canvasDom.height = window.screen.height * iosScale;
+canvasDom.width = window.screen.width * iosScale;
+sWidth = window.screen.width;
+sHeight = window.screen.height;
+    }
+}
+layout();//设置旋转屏幕时自动调整布局和画布
+window.addEventListener("orientationchange", layout, false);
+//*设置自定义的悬浮按钮图标点击动作
+setButtonAction(function () {
+let menu = document.querySelector("#app");
+if (menu.style.display == 'none') {
+menu.style.display = 'block';
+//隐藏菜单之后, 设置触控穿透悬浮窗口
+setWindowTouch(true);
+} else {
+menu.style.display = 'none';
+//显示菜单之后, 设置触控不可穿透悬浮窗口
+setWindowTouch(false);
+        }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//******************绘制数据结尾*********************
+function toggleColor(btnNum) {
+var buttons = document.getElementsByClassName('button');
+for (var i = 0; i < buttons.length; i++) {
+if (i == btnNum - 1) {
+buttons[i].style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+} else {
+buttons[i].style.backgroundColor = '#ffffff00'; // 取消背景颜色
+      }
+   }
+}
+page2.style.display = 'none';
+page3.style.display = 'none';
+page4.style.display = 'none';
+page5.style.display = 'none';
+function p1() {//一页面
+page1.style.display = 'block';
+page2.style.display = 'none';
+page3.style.display = 'none';
+page4.style.display = 'none';
+page5.style.display = 'none';
+}
+function p2() {//二页面
+page2.style.display = 'block';
+page1.style.display = 'none';
+page3.style.display = 'none';
+page4.style.display = 'none';
+page5.style.display = 'none';
+}
+function p3() {//三页面
+page3.style.display = 'block';
+page2.style.display = 'none';
+page1.style.display = 'none';
+page4.style.display = 'none';
+page5.style.display = 'none';
+}
+function p4() { //四页面
+page4.style.display = 'block';
+page1.style.display = 'none';
+page2.style.display = 'none';
+page3.style.display = 'none';
+page5.style.display = 'none';
+}
+function p5() { //五页面
+page5.style.display = 'block'; 
+page1.style.display = 'none';
+page2.style.display = 'none';
+page3.style.display = 'none';
+page4.style.display = 'none';
+}
+ function createRipple() {
+const ripple = document.createElement('div');
+ripple.className = 'ripple';
+ripple.style.left = Math.random() * 100 + 'vw';
+ripple.style.top = Math.random() * 100 + 'vh';
+document.querySelector('.ripple-container').appendChild(ripple);
+setTimeout(() => ripple.remove(), 20000);
+}
+setInterval(createRipple, 200);  
+
+</script>
+</body>
+</html>
