@@ -1,0 +1,186 @@
+-- 加载UI库
+local OrionLib = loadstring(game:HttpGet('https://pastebin.com/raw/SePpsSPZ'))()
+
+-- 启动通知
+local CoreGui = game:GetService("StarterGui")
+CoreGui:SetCore("SendNotification", {
+    Title = "脚本",
+    Text = "正在加载（反挂机已开启）",
+    Duration = 5, 
+})
+
+-- 反挂机系统
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+    vu:Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+    wait(1)
+    vu:Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+end)
+
+print("反挂机开启")
+
+-- 创建主窗口
+local Window = OrionLib:MakeWindow({
+    Name = "脚本", 
+    HidePremium = false, 
+    SaveConfig = true,
+    IntroText = "欢迎使用脚本", 
+    ConfigFolder = "欢迎使用脚本"
+})
+
+-- 创建关于标签页
+local about = Window:MakeTab({
+    Name = "Hub V10",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- 添加关于信息
+about:AddParagraph("您的用户名:", " "..game.Players.LocalPlayer.Name.."")
+about:AddParagraph("您的注入器:", " "..identifyexecutor().."")
+about:AddParagraph("您当前服务器的ID", " "..game.GameId.."")
+
+-- 创建通用脚本标签页
+local Tab = Window:MakeTab({
+    Name = "通用脚本",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- 添加功能按钮
+Tab:AddButton({
+    Name = "飞行",
+    Callback = function()
+        loadstring(game:HttpGet('https://rentry.co/shadiao_yazifly/raw'))()
+    end
+})
+
+-- 添加更多实用功能按钮
+Tab:AddButton({
+    Name = "无限跳",
+    Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/V5PQy3y0", true))()
+    end
+})
+
+Tab:AddButton({
+    Name = "透视",
+    Callback = function()
+        loadstring(game:HttpGet('https://pastebin.com/raw/MA8jhPWT'))()
+    end
+})
+
+-- 添加输入框
+Tab:AddTextbox({
+    Name = "移动速度",
+    Default = "16",
+    TextDisappear = true,
+    Callback = function(Value)
+        if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = tonumber(Value) or 16
+        end
+    end	 
+})
+
+Tab:AddTextbox({
+    Name = "跳跃高度",
+    Default = "50",
+    TextDisappear = true,
+    Callback = function(Value)
+        if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+            game.Players.LocalPlayer.Character.Humanoid.JumpPower = tonumber(Value) or 50
+        end
+    end	 
+})
+
+-- 添加切换开关
+local Noclip = false
+local Stepped = nil
+
+Tab:AddToggle({
+    Name = "穿墙",
+    Default = false,
+    Callback = function(Value)
+        if Value then
+            Noclip = true
+            Stepped = game.RunService.Stepped:Connect(function()
+                if Noclip and game.Players.LocalPlayer.Character then
+                    for _, child in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+                        if child:IsA("BasePart") then
+                            child.CanCollide = false
+                        end
+                    end
+                else
+                    if Stepped then
+                        Stepped:Disconnect()
+                    end
+                end
+            end)
+        else
+            Noclip = false
+            if Stepped then
+                Stepped:Disconnect()
+            end
+        end
+    end
+})
+
+Tab:AddToggle({
+    Name = "夜视",
+    Default = false,
+    Callback = function(Value)
+        if Value then
+            game.Lighting.Ambient = Color3.new(1, 1, 1)
+            game.Lighting.Brightness = 1
+        else
+            game.Lighting.Ambient = Color3.new(0, 0, 0)
+            game.Lighting.Brightness = 0
+        end
+    end
+})
+
+-- 创建关于页面
+local aboutTab = Window:MakeTab({
+    Name = "关于（必看）",
+    Icon = "rbxassetid://7734068321",
+    PremiumOnly = false
+})
+
+aboutTab:AddButton({
+    Name = "脚本作者：v",
+    Callback = function()
+        setclipboard("9178787891")
+        OrionLib:MakeNotification({
+            Name = "复制成功",
+            Content = "作者联系方式已复制到剪贴板",
+            Time = 3
+        })
+    end
+})
+
+aboutTab:AddButton({
+    Name = "清空剪贴板",
+    Callback = function()
+        setclipboard("")
+        OrionLib:MakeNotification({
+            Name = "清空成功",
+            Content = "剪贴板已清空",
+            Time = 3
+        })
+    end
+})
+
+aboutTab:AddParagraph("版本信息", "Hub V10 - 稳定版")
+aboutTab:AddParagraph("功能特点", "• 多种实用脚本\n• 稳定的反挂机系统\n• 用户友好的界面")
+
+-- 初始化UI库
+OrionLib:Init()
+
+-- 加载完成通知
+wait(1)
+OrionLib:MakeNotification({
+    Name = "加载完成",
+    Content = "脚本已成功加载！",
+    Time = 5
+})
+
