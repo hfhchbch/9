@@ -1,96 +1,5 @@
-local Players = game:GetService("Players")
-local Player = Players.LocalPlayer
-local PlayerGui = Player:WaitForChild("PlayerGui")
+local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/FUEx0f3G"))()
 
--- 创建主屏幕GUI
-local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "ScriptHub"
-ScreenGui.ResetOnSpawn = false
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
--- 创建主框架
-local MainFrame = Instance.new("Frame")
-MainFrame.Name = "MainFrame"
-MainFrame.Size = UDim2.new(0, 400, 0, 500)
-MainFrame.Position = UDim2.new(0.5, -200, 0.5, -250)
-MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-MainFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-MainFrame.BorderSizePixel = 0
-MainFrame.Parent = ScreenGui
-
--- 创建圆角
-local Corner = Instance.new("UICorner")
-Corner.CornerRadius = UDim.new(0, 8)
-Corner.Parent = MainFrame
-
--- 创建标题栏
-local TitleBar = Instance.new("Frame")
-TitleBar.Name = "TitleBar"
-TitleBar.Size = UDim2.new(1, 0, 0, 40)
-TitleBar.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-TitleBar.BorderSizePixel = 0
-TitleBar.Parent = MainFrame
-
-local TitleCorner = Instance.new("UICorner")
-TitleCorner.CornerRadius = UDim.new(0, 8)
-TitleCorner.Parent = TitleBar
-
-local TitleLabel = Instance.new("TextLabel")
-TitleLabel.Name = "TitleLabel"
-TitleLabel.Size = UDim2.new(1, 0, 1, 0)
-TitleLabel.BackgroundTransparency = 1
-TitleLabel.Text = "脚本 Hub V10"
-TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TitleLabel.TextScaled = true
-TitleLabel.Font = Enum.Font.GothamBold
-TitleLabel.Parent = TitleBar
-
--- 创建关闭按钮
-local CloseButton = Instance.new("TextButton")
-CloseButton.Name = "CloseButton"
-CloseButton.Size = UDim2.new(0, 30, 0, 30)
-CloseButton.Position = UDim2.new(1, -35, 0.5, -15)
-CloseButton.AnchorPoint = Vector2.new(0.5, 0.5)
-CloseButton.BackgroundColor3 = Color3.fromRGB(255, 60, 60)
-CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-CloseButton.Text = "X"
-CloseButton.Font = Enum.Font.GothamBold
-CloseButton.Parent = TitleBar
-
-local CloseCorner = Instance.new("UICorner")
-CloseCorner.CornerRadius = UDim.new(0, 15)
-CloseCorner.Parent = CloseButton
-
--- 创建标签按钮容器
-local TabButtons = Instance.new("Frame")
-TabButtons.Name = "TabButtons"
-TabButtons.Size = UDim2.new(1, 0, 0, 50)
-TabButtons.Position = UDim2.new(0, 0, 0, 40)
-TabButtons.BackgroundTransparency = 1
-TabButtons.Parent = MainFrame
-
--- 创建内容容器
-local ContentFrame = Instance.new("Frame")
-ContentFrame.Name = "ContentFrame"
-ContentFrame.Size = UDim2.new(1, -20, 1, -100)
-ContentFrame.Position = UDim2.new(0, 10, 0, 90)
-ContentFrame.BackgroundTransparency = 1
-ContentFrame.Parent = MainFrame
-
--- 创建滚动框
-local ScrollingFrame = Instance.new("ScrollingFrame")
-ScrollingFrame.Name = "ScrollingFrame"
-ScrollingFrame.Size = UDim2.new(1, 0, 1, 0)
-ScrollingFrame.BackgroundTransparency = 1
-ScrollingFrame.ScrollBarThickness = 6
-ScrollingFrame.Parent = ContentFrame
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Padding = UDim.new(0, 10)
-UIListLayout.Parent = ScrollingFrame
-
--- 启动通知
 local CoreGui = game:GetService("StarterGui")
 CoreGui:SetCore("SendNotification", {
     Title = "脚本",
@@ -98,9 +7,16 @@ CoreGui:SetCore("SendNotification", {
     Duration = 5, 
 })
 
--- 反挂机系统
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local UserInputService = game:GetService("UserInputService")
+
+local function identifyexecutor()
+    return "VirtualUser"
+end
+
 local vu = game:GetService("VirtualUser")
-game:GetService("Players").LocalPlayer.Idled:connect(function()
+LocalPlayer.Idled:Connect(function()
     vu:Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
     wait(1)
     vu:Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
@@ -108,335 +24,158 @@ end)
 
 print("反挂机开启")
 
--- 创建标签页数据
-local Tabs = {
-    {
-        Name = "Hub V10",
-        Content = {}
-    },
-    {
-        Name = "通用脚本", 
-        Content = {}
-    },
-    {
-        Name = "关于（必看）",
-        Content = {}
-    }
-}
+local Window = OrionLib:MakeWindow({
+    Name = "脚本", 
+    HidePremium = false, 
+    SaveConfig = true,
+    IntroText = "欢迎使用脚本", 
+    ConfigFolder = "欢迎使用脚本"
+})
 
--- 创建标签按钮
-local function CreateTabButton(tabName, index)
-    local TabButton = Instance.new("TextButton")
-    TabButton.Name = tabName .. "Tab"
-    TabButton.Size = UDim2.new(0.3, 0, 1, 0)
-    TabButton.Position = UDim2.new((index-1) * 0.33, 10, 0, 0)
-    TabButton.BackgroundColor3 = index == 1 and Color3.fromRGB(70, 70, 70) or Color3.fromRGB(50, 50, 50)
-    TabButton.Text = tabName
-    TabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-    TabButton.Font = Enum.Font.Gotham
-    TabButton.TextSize = 14
-    TabButton.Parent = TabButtons
-    
-    local TabCorner = Instance.new("UICorner")
-    TabCorner.CornerRadius = UDim.new(0, 6)
-    TabCorner.Parent = TabButton
-    
-    return TabButton
-end
+local about = Window:MakeTab({
+    Name = "Hub V10",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
 
--- 创建信息标签
-local function CreateInfoLabel(text)
-    local Label = Instance.new("TextLabel")
-    Label.Size = UDim2.new(1, 0, 0, 30)
-    Label.BackgroundTransparency = 1
-    Label.Text = text
-    Label.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Label.TextXAlignment = Enum.TextXAlignment.Left
-    Label.Font = Enum.Font.Gotham
-    Label.TextSize = 14
-    Label.Parent = ScrollingFrame
-    
-    return Label
-end
+about:AddParagraph("您的用户名:", " "..LocalPlayer.Name.."")
+about:AddParagraph("您的注入器:", " "..identifyexecutor().."")
+about:AddParagraph("您当前服务器的ID", " "..game.GameId.."")
+	
+local Tab = Window:MakeTab({
+    Name = "通用脚本",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
 
--- 创建功能按钮
-local function CreateFunctionButton(text, callback)
-    local Button = Instance.new("TextButton")
-    Button.Size = UDim2.new(1, 0, 0, 40)
-    Button.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-    Button.Text = text
-    Button.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Button.Font = Enum.Font.Gotham
-    Button.TextSize = 14
-    Button.Parent = ScrollingFrame
-    
-    local ButtonCorner = Instance.new("UICorner")
-    ButtonCorner.CornerRadius = UDim.new(0, 6)
-    ButtonCorner.Parent = Button
-    
-    Button.MouseButton1Click:Connect(callback)
-    
-    return Button
-end
-
--- 创建输入框
-local function CreateTextbox(placeholder, callback)
-    local TextboxFrame = Instance.new("Frame")
-    TextboxFrame.Size = UDim2.new(1, 0, 0, 50)
-    TextboxFrame.BackgroundTransparency = 1
-    TextboxFrame.Parent = ScrollingFrame
-    
-    local Textbox = Instance.new("TextBox")
-    Textbox.Size = UDim2.new(1, 0, 0, 30)
-    Textbox.Position = UDim2.new(0, 0, 0, 20)
-    Textbox.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
-    Textbox.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Textbox.PlaceholderText = placeholder
-    Textbox.Font = Enum.Font.Gotham
-    Textbox.TextSize = 14
-    Textbox.Parent = TextboxFrame
-    
-    local TextboxCorner = Instance.new("UICorner")
-    TextboxCorner.CornerRadius = UDim.new(0, 6)
-    TextboxCorner.Parent = Textbox
-    
-    Textbox.FocusLost:Connect(function(enterPressed)
-        if enterPressed then
-            callback(Textbox.Text)
-            Textbox.Text = ""
-        end
-    end)
-    
-    return TextboxFrame
-end
-
--- 创建切换开关
-local function CreateToggle(text, default, callback)
-    local ToggleFrame = Instance.new("Frame")
-    ToggleFrame.Size = UDim2.new(1, 0, 0, 40)
-    ToggleFrame.BackgroundTransparency = 1
-    ToggleFrame.Parent = ScrollingFrame
-    
-    local ToggleLabel = Instance.new("TextLabel")
-    ToggleLabel.Size = UDim2.new(0.7, 0, 1, 0)
-    ToggleLabel.BackgroundTransparency = 1
-    ToggleLabel.Text = text
-    ToggleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-    ToggleLabel.TextXAlignment = Enum.TextXAlignment.Left
-    ToggleLabel.Font = Enum.Font.Gotham
-    ToggleLabel.TextSize = 14
-    ToggleLabel.Parent = ToggleFrame
-    
-    local ToggleButton = Instance.new("TextButton")
-    ToggleButton.Size = UDim2.new(0, 50, 0, 25)
-    ToggleButton.Position = UDim2.new(1, -50, 0.5, -12.5)
-    ToggleButton.AnchorPoint = Vector2.new(1, 0.5)
-    ToggleButton.BackgroundColor3 = default and Color3.fromRGB(0, 170, 255) or Color3.fromRGB(80, 80, 80)
-    ToggleButton.Text = ""
-    ToggleButton.Parent = ToggleFrame
-    
-    local ToggleCorner = Instance.new("UICorner")
-    ToggleCorner.CornerRadius = UDim.new(0, 12.5)
-    ToggleCorner.Parent = ToggleButton
-    
-    local ToggleCircle = Instance.new("Frame")
-    ToggleCircle.Size = UDim2.new(0, 20, 0, 20)
-    ToggleCircle.Position = default and UDim2.new(1, -25, 0.5, -10) or UDim2.new(0, 5, 0.5, -10)
-    ToggleCircle.AnchorPoint = Vector2.new(1, 0.5)
-    ToggleCircle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    ToggleCircle.Parent = ToggleButton
-    
-    local CircleCorner = Instance.new("UICorner")
-    CircleCorner.CornerRadius = UDim.new(0, 10)
-    CircleCorner.Parent = ToggleCircle
-    
-    ToggleButton.MouseButton1Click:Connect(function()
-        default = not default
-        ToggleButton.BackgroundColor3 = default and Color3.fromRGB(0, 170, 255) or Color3.fromRGB(80, 80, 80)
-        ToggleCircle.Position = default and UDim2.new(1, -25, 0.5, -10) or UDim2.new(0, 5, 0.5, -10)
-        callback(default)
-    end)
-    
-    return ToggleFrame
-end
-
--- 切换标签页函数
-local function SwitchTab(tabIndex)
-    -- 清除当前内容
-    for _, child in pairs(ScrollingFrame:GetChildren()) do
-        if not child:IsA("UIListLayout") then
-            child:Destroy()
-        end
+Tab:AddButton({
+    Name = "飞行",
+    Callback = function()
+        loadstring(game:HttpGet('https://rentry.co/shadiao_yazifly/raw'))()
     end
-    
-    -- 更新标签按钮颜色
-    for i, button in pairs(TabButtons:GetChildren()) do
-        if button:IsA("TextButton") then
-            button.BackgroundColor3 = i == tabIndex and Color3.fromRGB(70, 70, 70) or Color3.fromRGB(50, 50, 50)
-        end
+})
+
+Tab:AddButton({
+    Name = "无限跳",
+    Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/V5PQy3y0", true))()
     end
-    
-    -- 添加新内容
-    if tabIndex == 1 then -- Hub V10
-        CreateInfoLabel("用户名: " .. Player.Name)
-        CreateInfoLabel("注入器: " .. identifyexecutor())
-        CreateInfoLabel("服务器ID: " .. game.GameId)
-        
-    elseif tabIndex == 2 then -- 通用脚本
-        -- 功能按钮
-        CreateFunctionButton("飞行", function()
-            loadstring(game:HttpGet('https://rentry.co/shadiao_yazifly/raw'))()
-        end)
-        
-        CreateFunctionButton("无限跳", function()
-            loadstring(game:HttpGet("https://pastebin.com/raw/V5PQy3y0", true))()
-        end)
-        
-        CreateFunctionButton("透视", function()
-            loadstring(game:HttpGet('https://pastebin.com/raw/MA8jhPWT'))()
-        end)
-        
-        -- 输入框
-        CreateTextbox("移动速度 (默认: 16)", function(Value)
-            if Player.Character and Player.Character:FindFirstChild("Humanoid") then
-                Player.Character.Humanoid.WalkSpeed = tonumber(Value) or 16
-            end
-        end)
-        
-        CreateTextbox("跳跃高度 (默认: 50)", function(Value)
-            if Player.Character and Player.Character:FindFirstChild("Humanoid") then
-                Player.Character.Humanoid.JumpPower = tonumber(Value) or 50
-            end
-        end)
-        
-        -- 切换开关
-        local Noclip = false
-        local Stepped = nil
-        
-        CreateToggle("穿墙", false, function(Value)
-            if Value then
-                Noclip = true
-                Stepped = game.RunService.Stepped:Connect(function()
-                    if Noclip and Player.Character then
-                        for _, child in pairs(Player.Character:GetChildren()) do
-                            if child:IsA("BasePart") then
-                                child.CanCollide = false
-                            end
-                        end
-                    else
-                        if Stepped then
-                            Stepped:Disconnect()
+})
+
+Tab:AddButton({
+    Name = "透视",
+    Callback = function()
+        loadstring(game:HttpGet('https://pastebin.com/raw/MA8jhPWT'))()
+    end
+})
+
+Tab:AddTextbox({
+    Name = "移动速度",
+    Default = "16",
+    TextDisappear = true,
+    Callback = function(Value)
+        if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid") then
+            LocalPlayer.Character.Humanoid.WalkSpeed = tonumber(Value) or 16
+        end
+    end	 
+})
+
+Tab:AddTextbox({
+    Name = "跳跃高度",
+    Default = "50",
+    TextDisappear = true,
+    Callback = function(Value)
+        if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid") then
+            LocalPlayer.Character.Humanoid.JumpPower = tonumber(Value) or 50
+        end
+    end	 
+})
+
+local Noclip = false
+local Stepped = nil
+
+Tab:AddToggle({
+    Name = "穿墙",
+    Default = false,
+    Callback = function(Value)
+        if Value then
+            Noclip = true
+            Stepped = game:GetService("RunService").Stepped:Connect(function()
+                if Noclip and LocalPlayer.Character then
+                    for _, child in pairs(LocalPlayer.Character:GetChildren()) do
+                        if child:IsA("BasePart") then
+                            child.CanCollide = false
                         end
                     end
-                end)
-            else
-                Noclip = false
-                if Stepped then
-                    Stepped:Disconnect()
+                else
+                    if Stepped then
+                        Stepped:Disconnect()
+                    end
                 end
+            end)
+        else
+            Noclip = false
+            if Stepped then
+                Stepped:Disconnect()
             end
-        end)
-        
-        CreateToggle("夜视", false, function(Value)
-            if Value then
-                game.Lighting.Ambient = Color3.new(1, 1, 1)
-                game.Lighting.Brightness = 1
-            else
-                game.Lighting.Ambient = Color3.new(0, 0, 0)
-                game.Lighting.Brightness = 0
-            end
-        end)
-        
-    elseif tabIndex == 3 then -- 关于（必看）
-        CreateInfoLabel("版本: Hub V10 - 稳定版")
-        CreateInfoLabel("功能特点:")
-        CreateInfoLabel("• 多种实用脚本")
-        CreateInfoLabel("• 稳定的反挂机系统") 
-        CreateInfoLabel("• 用户友好的界面")
-        
-        CreateFunctionButton("复制作者联系方式", function()
-            setclipboard("9178787891")
-            -- 显示复制成功通知
-            game:GetService("StarterGui"):SetCore("SendNotification",{
-                Title = "复制成功",
-                Text = "作者联系方式已复制到剪贴板",
-                Duration = 3
-            })
-        end)
-        
-        CreateFunctionButton("清空剪贴板", function()
-            setclipboard("")
-            game:GetService("StarterGui"):SetCore("SendNotification",{
-                Title = "清空成功", 
-                Text = "剪贴板已清空",
-                Duration = 3
-            })
-        end)
+        end
     end
-end
+})
 
--- 创建标签按钮并绑定事件
-for i, tab in ipairs(Tabs) do
-    local button = CreateTabButton(tab.Name, i)
-    button.MouseButton1Click:Connect(function()
-        SwitchTab(i)
-    end)
-end
-
--- 关闭按钮事件
-CloseButton.MouseButton1Click:Connect(function()
-    ScreenGui.Enabled = false
-end)
-
--- 使窗口可拖动
-local dragging
-local dragInput
-local dragStart
-local startPos
-
-local function update(input)
-    local delta = input.Position - dragStart
-    MainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-end
-
-TitleBar.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        dragging = true
-        dragStart = input.Position
-        startPos = MainFrame.Position
-        
-        input.Changed:Connect(function()
-            if input.UserInputState == Enum.UserInputState.End then
-                dragging = false
-            end
-        end)
+Tab:AddToggle({
+    Name = "夜视",
+    Default = false,
+    Callback = function(Value)
+        if Value then
+            game.Lighting.Ambient = Color3.new(1, 1, 1)
+            game.Lighting.Brightness = 1
+        else
+            game.Lighting.Ambient = Color3.new(0, 0, 0)
+            game.Lighting.Brightness = 0
+        end
     end
-end)
+})
 
-TitleBar.InputChanged:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseMovement then
-        dragInput = input
+local aboutTab = Window:MakeTab({
+    Name = "关于（必看）",
+    Icon = "rbxassetid://7734068321",
+    PremiumOnly = false
+})
+
+aboutTab:AddButton({
+    Name = "脚本作者：v",
+    Callback = function()
+        setclipboard("9178787891")
+        OrionLib:MakeNotification({
+            Name = "复制成功",
+            Content = "作者联系方式已复制到剪贴板",
+            Time = 3
+        })
     end
-end)
+})
 
-game:GetService("UserInputService").InputChanged:Connect(function(input)
-    if input == dragInput and dragging then
-        update(input)
+aboutTab:AddButton({
+    Name = "清空剪贴板",
+    Callback = function()
+        setclipboard("")
+        OrionLib:MakeNotification({
+            Name = "清空成功",
+            Content = "剪贴板已清空",
+            Time = 3
+        })
     end
-end)
+})
 
--- 初始化显示第一个标签页
-SwitchTab(1)
+aboutTab:AddParagraph("版本信息", "Hub V10 - 稳定版")
+aboutTab:AddParagraph("功能特点", "• 多种实用脚本\n• 稳定的反挂机系统\n• 用户友好的界面")
 
--- 添加到玩家GUI
-ScreenGui.Parent = PlayerGui
+OrionLib:Init()
 
--- 加载完成通知
 wait(1)
-game:GetService("StarterGui"):SetCore("SendNotification",{
-    Title = "加载完成",
-    Text = "脚本已成功加载！",
-    Duration = 5
+OrionLib:MakeNotification({
+    Name = "加载完成",
+    Content = "脚本已成功加载！",
+    Time = 5
 })
 
 print("脚本加载完成")
