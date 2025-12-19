@@ -1,0 +1,284 @@
+--Kenny泛滥外部汉化脚本我的哔站UID:1531514159（删了这个死妈死爹死全家）
+local Translations = {
+    ["Kill Aura"] = "自动攻击",
+    ["Classes"] = "职业",
+    ["Esp"] = "透视",
+    ["Players"] = "玩家",
+    ["Events"] = "事件",
+    ["Others"] = "其他",
+    ["Search"] = "搜索",
+    ["Dashboard"] = "控制面板",
+    ["Main"] = "主设置",
+    ["Gun Modifiers"] = "枪械修改",
+    ["Show Billboard"] = "显示信息板",
+    ["Toggles billboards above the zombies"] = "切换僵尸上方的信息板显示",
+    ["Chams Transparency"] = "透视模型透明度",
+    ["Controls the transparency of the chams"] = "控制透视模型的透明度",
+    ["Chams View Distance"] = "透视模型可视距离",
+    ["Maximum distance to render zombie chams/highlights (in studs)"] = "渲染僵尸透视模型/高亮的最大距离（单位：studs）",
+    ["Performance"] = "性能优化",
+    ["Makes chams into a dot and makes billboard simple"] = "将透视模型改为圆点并简化信息板",
+    ["Notify Cuirassier Charge"] = "胸甲僵尸冲锋提醒",
+    ["Sends a notification when a Cuirassier starts charging"] = "当胸甲僵尸开始冲锋时发送通知",
+    ["Color for normal Shambler zombies"] = "普通蹒跚僵尸的颜色",
+    ["Barrel (Bomber)"] = "自爆（轰炸机）",
+    ["Color for Barrel zombies (Bomber)"] = "桶怪（轰炸机）的颜色",
+    ["Cuirassier"] = "二师兄",
+    ["Color for Cuirassier zombies"] = "胸甲僵尸的颜色",
+    ["Runner"] = "红眼",
+    ["Color for Runner zombies"] = "奔跑者的颜色",
+    ["Zapper"] = "大师兄",
+    ["Color for Zapper zombies"] = "电击者的颜色",
+    ["Igniter"] = "火男",
+    ["Color for Igniter zombies"] = "点火者的颜色",
+    ["Shambler (Normal)"] = "普通僵尸（普通）",
+    ["ESP & Zombie Alerts"] = "透视与僵尸警报",
+    ["Select ESP Types"] = "选择透视类型",
+    ["Type Of Zombies To Enable Esp At."] = "启用透视的僵尸类型",
+    ["Enable Selected ESP"] = "启用选中的透视",
+    ["Enable Esp From The Selected Type."] = "启用选中类型的透视",
+    ["ESP Colors"] = "透视颜色",
+    ["Target ESP"] = "目标透视",
+    ["Shows the zombie its currently targeting."] = "显示当前锁定的僵尸",
+    ["Shove Aura"] = "自动推开",
+    ["Auto Shoves Zombies Near You."] = "自动推开你附近的僵尸",
+    ["Shove Range"] = "推开范围",
+    ["How Far Shove Aura Will Shove"] = "自动推开的有效距离",
+    ["Shove Targets"] = "推开目标数",
+    ["How many nearest Zombies to target in 1 shove."] = "推开锁定的最近僵尸数量",
+    ["Shove Delay"] = "推开延迟",
+    ["controls how fast to shove."] = "控制推开的速度",
+    ["Chaplain"] = "牧师",
+    ["Auto Bless Infected Players"] = "自动祝福被感染玩家",
+    ["turns on auto bless"] = "开启自动祝福",
+    ["Infected Threshold"] = "感染阈值",
+    ["threshold of auto bless"] = "自动祝福的阈值",
+    ["Sapper"] = "工兵",
+    ["Auto Repair"] = "自动修复",
+    ["Auto repair's Buildings"] = "自动修复建筑",
+    ["Anti Grab"] = "防抓取",
+    ["Will AutoMatically Shove The Zombie Grabbing You."] = "自动推开抓取你的僵尸",
+    ["Musician"] = "音乐家",
+    ["Auto Play Fife/Drum/Bagpipe"] = "自动演奏横笛/鼓/风笛",
+    ["Automatically plays instruments."] = "自动演奏乐器",
+    ["Medic"] = "医护兵",
+    ["Auto Request Heal Dying Players"] = "自动为濒死玩家请求治疗",
+    ["Automatically requests heal for players with low health when nearby"] = "在附近时为低血量玩家自动请求治疗",
+    ["Heal Threshold (%)"] = "治疗阈值（%）",
+    ["Health percentage threshold for auto heal"] = "自动治疗的血量百分比阈值",
+    ["Auto Pick Up Supplies"] = "自动拾取物资",
+    ["Automatically picks up supplies until meter is full."] = "自动拾取物资直到计量表满",
+    ["Automatically Kills Zombie In Range"] = "自动击杀范围内的僵尸",
+    ["Kill Aura Range"] = "自动攻击范围",
+    ["The Range Of Where Kill Aura Will Start Attacking If a zombie crosses the range."] = "僵尸进入该范围后，自动攻击将开始生效",
+    ["Attack Speed"] = "攻击速度",
+    ["The attacking speed of kill aura"] = "自动攻击的攻击频率",
+    ["Multiple targets"] = "多目标",
+    ["Controls how many zombies kill aura target"] = "控制自动攻击锁定的僵尸数量",
+    ["Auto Equip Melee"] = "自动装备近战武器",
+    ["Automatically equips a melee from backpack when Kill Aura is on."] = "开启自动攻击时从背包自动装备近战武器",
+    ["Target Zombie Types"] = "目标僵尸类型",
+    ["Select which zombie types to target"] = "选择要锁定的僵尸类型",
+    ["Enable Bayonet Kill Aura"] = "启用刺刀自动攻击",
+    ["Kill aura will use bayonet."] = "自动攻击将使用刺刀",
+    ["Auto Look"] = "自动瞄准",
+    ["Automatically looks at the nearest zombie"] = "自动看向最近的僵尸",
+    ["Reach"] = "攻击距离扩展",
+    ["Will Reach The Zombie For About 30 studs (Might Be Lower)"] = "攻击距离扩展至约30studs（实际可能更低）",
+    ["Reach Range"] = "扩展距离",
+    ["Range of Reach"] = "攻击扩展的有效距离",
+    ["Visualize Bomber Explosion Radius"] = "显示桶怪爆炸范围",
+    ["Shows a circle around bombers showing the explosion radius."] = "在桶怪周围显示代表爆炸范围的圆圈",
+    ["Show Aim Position"] = "显示瞄准点",
+    ["Shows a red dot at the aim position."] = "在瞄准位置显示红点",
+    ["Misc"] = "杂项",
+    ["Hand Mortar Timing"] = "手持迫击炮倒计时",
+    ["Shows The Timer Of The Mortar Before Blowing Up."] = "显示迫击炮爆炸前的倒计时",
+    ["Bomber Safety Radius"] = "桶怪安全距离",
+    ["The Selected Studs to control avoid shooting barrels, and 2 more."] = "设置避免射击桶怪的距离，另有两项相关控制",
+    ["Don't Shoot Near"] = "附近不射击",
+    ["Whitelist"] = "白名单",
+    ["Won't shoot bombers if these specific players are within blast radius"] = "若白名单玩家在爆炸范围内，则不射击桶怪",
+    ["Shoot Near Whitelist"] = "白名单附近射击",
+    ["ONLY shoot bombers when these specific players are within blast radius (for Shoot Bomber Near Teammates)"] = "仅当白名单玩家在爆炸范围内时射击桶怪（对应“队友附近射击桶怪”功能）",
+    ["Auto Save Whitelist"] = "自动保护白名单",
+    ["Only save these players"] = "仅保护这些玩家",
+    ["Targets Settings"] = "目标设置",
+    ["Don't Shoot Bomber Near Teammates"] = "队友附近不射击自爆",
+    ["Won't shoot bombers within the selected studs of teammates."] = "队友在设定距离内时不射击自爆",
+    ["Shoot Bomber Near Teammates"] = "队友附近射击自爆",
+    ["ONLY shoot bombers when teammates are within the selected studs (opposite of above)."] = "仅当队友在设定距离内时射击自爆（与上述功能相反）",
+    ["Don't Shoot Bomber Near Me"] = "自身附近不射击自爆",
+    ["Won't shoot bombers within the selected studs of yourself."] = "自身在设定距离内时不射击自爆",
+    ["Save Players"] = "保护玩家",
+    ["Auto Save Players"] = "自动保护玩家",
+    ["Shoot Zombies Grabbing The player."] = "射击抓取玩家的僵尸",
+    ["Instant Save Players"] = "立即保护玩家",
+    ["Instantly shoot the zombie grabbing the player (No Animations)"] = "立即射击抓取玩家的僵尸（无动画）",
+    ["Save Player Delay"] = "保护玩家延迟",
+    ["Delay before shooting when saving player (seconds)"] = "保护玩家时的射击延迟（秒）",
+    ["Max Save Players Range"] = "最大保护玩家距离",
+    ["Max save players distance."] = "保护玩家的最大有效距离",
+    ["Mobile Fov"] = "移动端视野",
+    ["Fov stays in the middle (can be used in pc too)."] = "视野固定在中间（电脑端也可使用）",
+    ["Show Fov"] = "显示视野圈",
+    ["Show the fov circle."] = "显示视野范围的圆圈",
+    ["Fov Size"] = "视野大小",
+    ["change the FOV circle size."] = "调整视野圈的大小",
+    ["Wall Check (Raycast)"] = "穿墙检测（射线）",
+    ["Selected zombies behind walls will be ignored."] = "将忽略墙体后的选中僵尸",
+    ["Instant Shoot"] = "瞬间射击",
+    ["Instantly shoot selected zombies (No Animations)"] = "瞬间射击选中的僵尸（无动画）",
+    ["Auto Shoot Delay"] = "自动射击延迟",
+    ["Total time from aiming to firing (seconds). Set higher for smoother rotation."] = "从瞄准到射击的总时长（秒），数值越高旋转越流畅",
+    ["Prediction"] = "预判",
+    ["Lead time in seconds (0.20 is recommended)"] = "预判提前量（秒），推荐值为0.20",
+    ["Max Target Range"] = "最大目标距离",
+    ["Maximum detection range."] = "最大检测范围",
+    ["Use Fov"] = "使用视野限制",
+    ["Only target zombies inside the FOV."] = "仅锁定视野内的僵尸",
+    ["Gun Mod"] = "枪械修改",
+    ["Auto Reload"] = "自动换弹",
+    ["Automatically reload."] = "自动完成换弹操作",
+    ["Shooting"] = "射击设置",
+    ["Select Zombie Types To AutoShoot"] = "选择自动射击的僵尸类型",
+    ["Choose which zombie types to target."] = "选择要锁定的僵尸类型",
+    ["Enable Auto Shoot"] = "启用自动射击",
+    ["Enable Auto Shooting for the selected zombie types."] = "为选中的僵尸类型启用自动射击",
+    ["Aiming"] = "瞄准设置",
+    ["Head Hit"] = "头部命中",
+    ["Forces Attacks To Redirect to the zombies Head."] = "强制将攻击目标转向僵尸的头部",
+    ["Legit Thingys"] = "仿原版设置",
+    ["Auto Jump"] = "自动跳跃",
+    ["Makes you jump When Thrusting Your Weapon"] = "挥砍武器时自动跳跃",
+    ["Hitbox"] = "碰撞箱",
+    ["Hitbox Expander"] = "碰撞箱扩展",
+    ["Expands zombie hitboxes for easier hits."] = "扩大僵尸碰撞箱，更容易命中",
+    ["Hitbox Zombie Size"] = "僵尸碰撞箱大小",
+    ["Hitbox Zombie Range"] = "僵尸碰撞箱生效距离",
+    ["Shove Hitbox Expander"] = "推开碰撞箱扩展",
+    ["Will make the Shove Hitbox Larger."] = "扩大推开操作的碰撞箱范围",
+    ["Hit Range"] = "命中距离",
+    ["How far your shove can reach zombies."] = "推开操作能命中僵尸的最远距离",
+    ["Max Targets"] = "最大目标数",
+    ["How many zombies to hit per shove."] = "每次推开能命中的僵尸数量",
+    ["Auto Parry Sapper"] = "自动格挡工兵",
+    ["Will Parry An Zapper When Its Attacking (Axe And Pickaxe)."] = "当电击者（工兵）用斧头/镐攻击时自动格挡"
+}
+
+}
+
+local function translateText(text)
+    if not text or type(text) ~= "string" then return text end
+    
+    if Translations[text] then
+        return Translations[text]
+    end
+    
+    for en, cn in pairs(Translations) do
+        if text:find(en) then
+            return text:gsub(en, cn)
+        end
+    end
+    
+    return text
+end
+
+local function setupTranslationEngine()
+    local success, err = pcall(function()
+        local oldIndex = getrawmetatable(game).__newindex
+        setreadonly(getrawmetatable(game), false)
+        
+        getrawmetatable(game).__newindex = newcclosure(function(t, k, v)
+            if (t:IsA("TextLabel") or t:IsA("TextButton") or t:IsA("TextBox")) and k == "Text" then
+                v = translateText(tostring(v))
+            end
+            return oldIndex(t, k, v)
+        end)
+        
+        setreadonly(getrawmetatable(game), true)
+    end)
+    
+    if not success then
+        warn("元表劫持失败:", err)
+       
+        local translated = {}
+        local function scanAndTranslate()
+            for _, gui in ipairs(game:GetService("CoreGui"):GetDescendants()) do
+                if (gui:IsA("TextLabel") or gui:IsA("TextButton") or gui:IsA("TextBox")) and not translated[gui] then
+                    pcall(function()
+                        local text = gui.Text
+                        if text and text ~= "" then
+                            local translatedText = translateText(text)
+                            if translatedText ~= text then
+                                gui.Text = translatedText
+                                translated[gui] = true
+                            end
+                        end
+                    end)
+                end
+            end
+            
+            local player = game:GetService("Players").LocalPlayer
+            if player and player:FindFirstChild("PlayerGui") then
+                for _, gui in ipairs(player.PlayerGui:GetDescendants()) do
+                    if (gui:IsA("TextLabel") or gui:IsA("TextButton") or gui:IsA("TextBox")) and not translated[gui] then
+                        pcall(function()
+                            local text = gui.Text
+                            if text and text ~= "" then
+                                local translatedText = translateText(text)
+                                if translatedText ~= text then
+                                    gui.Text = translatedText
+                                    translated[gui] = true
+                                end
+                            end
+                        end)
+                    end
+                end
+            end
+        end
+        
+        local function setupDescendantListener(parent)
+            parent.DescendantAdded:Connect(function(descendant)
+                if descendant:IsA("TextLabel") or descendant:IsA("TextButton") or descendant:IsA("TextBox") then
+                    task.wait(0.1)
+                    pcall(function()
+                        local text = descendant.Text
+                        if text and text ~= "" then
+                            local translatedText = translateText(text)
+                            if translatedText ~= text then
+                                descendant.Text = translatedText
+                            end
+                        end
+                    end)
+                end
+            end)
+        end
+        
+        pcall(setupDescendantListener, game:GetService("CoreGui"))
+        local player = game:GetService("Players").LocalPlayer
+        if player and player:FindFirstChild("PlayerGui") then
+            pcall(setupDescendantListener, player.PlayerGui)
+        end
+        
+        while true do
+            scanAndTranslate()
+            task.wait(3)
+        end
+    end
+end
+
+task.wait(2)
+
+setupTranslationEngine()
+
+local success, err = pcall(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/milkywiffle-netizen/Katchi-hub/refs/heads/main/KeysyGandB"))()
+
+
+
+end)
+
+if not success then
+    warn("加载失败:", err)
+end
