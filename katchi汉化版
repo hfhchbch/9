@@ -1,4 +1,3 @@
---Kenny泛滥外部汉化脚本我的哔站UID:1531514159（删了这个死妈死爹死全家）
 local Translations = {
     ["Kill Aura"] = "自动攻击",
     ["Classes"] = "职业",
